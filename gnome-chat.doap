@@ -1,0 +1,36 @@
+<Project xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+         xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+         xmlns:foaf="http://xmlns.com/foaf/0.1/"
+         xmlns:gnome="http://api.gnome.org/doap-extensions#"
+         xmlns="http://usefulinc.com/ns/doap#">
+
+  <name xml:lang="en">Chat</name>
+  <shortname xml:lang="en">gnome-chat</shortname>
+
+  <shortdesc xml:lang="en">Instant messaging client for GNOME</shortdesc>
+  <description xml:lang="en">Instant messaging client for GNOME</description>
+
+  <homepage rdf:resource="https://wiki.gnome.org/Apps/Chat" />
+  <license rdf:resource="http://usefulinc.com/doap/licenses/lgpl" />
+  <download-page rdf:resource="http://download.gnome.org/sources/gnome-chat" />
+  <bug-database rdf:resource="https://bugzilla.gnome.org/enter_bug.cgi?product=gnome-chat" />
+
+  <category rdf:resource="http://api.gnome.org/doap-extensions#desktop" />
+  <programming-language>C</programming-language>
+
+  <repository>
+    <GitRepository>
+      <location rdf:resource="git://git.gnome.org/gnome-chat" />
+      <browse rdf:resource="https://git.gnome.org/browse/gnome-chat/" />
+    </GitRepository>
+  </repository>
+
+  <maintainer>
+    <foaf:Person>
+      <foaf:name>Debarshi Ray</foaf:name>
+      <foaf:mbox rdf:resource="mailto:debarshir@gnome.org" />
+      <gnome:userid>debarshir</gnome:userid>
+    </foaf:Person>
+  </maintainer>
+
+</Project>

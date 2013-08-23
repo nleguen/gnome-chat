@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<interface domain="gnome-chat">
+  <!-- interface-requires gtk+ 3.10 -->
+  <template class="ChatEmbed" parent="GtkBox">
+    <property name="can_focus">False</property>
+    <property name="orientation">horizontal</property>
+    <property name="visible">True</property>
+    <child>
+      <object class="GtkRevealer" id="revealer">
+        <property name="can_focus">False</property>
+        <property name="hexpand">False</property>
+        <property name="transition_type">slide-right</property>
+        <property name="visible">True</property>
+        <child>
+          <object class="PolariFixedSizeFrame" id="sidebar_frame">
+            <property name="hexpand">False</property>
+            <property name="width">240</property>
+            <property name="visible">True</property>
+            <style>
+              <class name="sidebar"/>
+            </style>
+          </object>
+        </child>
+      </object>
+      <packing>
+        <property name="expand">False</property>
+        <property name="fill">False</property>
+        <property name="position">0</property>
+      </packing>
+    </child>
+    <child>
+      <object class="GtkBox" id="vbox">
+        <property name="can_focus">False</property>
+        <property name="hexpand">True</property>
+        <property name="orientation">vertical</property>
+        <property name="visible">True</property>
+      </object>
+      <packing>
+        <property name="expand">True</property>
+        <property name="fill">True</property>
+        <property name="position">1</property>
+      </packing>
+    </child>
+  </template>
+</interface>

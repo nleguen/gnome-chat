@@ -1,0 +1,11 @@
+[Desktop Entry]
+_Name=Chat
+_Comment=Instant messaging client
+Exec=@PACKAGE_TARNAME@
+Icon=@PACKAGE_TARNAME@
+StartupNotify=true
+Terminal=false
+Type=Application
+OnlyShowIn=GNOME
+Categories=GNOME;GTK;Utility;Core;
+_Keywords=_Keywords=Chat;Talk;IM;Message;VOIP;GTalk;Facebook;Jabber;

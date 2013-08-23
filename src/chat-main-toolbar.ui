@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<interface domain="gnome-chat">
+  <!-- interface-requires gtk+ 3.10 -->
+  <template class="ChatMainToolbar" parent="GtkBox">
+    <property name="can_focus">False</property>
+    <property name="orientation">horizontal</property>
+    <property name="visible">True</property>
+    <child>
+      <object class="GtkHeaderBar" id="toolbar_left">
+        <property name="can_focus">False</property>
+        <property name="hexpand">False</property>
+        <property name="hpadding">0</property>
+        <property name="title" translatable="yes">Conversations</property>
+        <property name="visible">True</property>
+        <property name="vpadding">0</property>
+        <child>
+          <object class="GtkToggleButton" id="search_button">
+            <property name="can_focus">True</property>
+            <property name="focus_on_click">False</property>
+            <property name="margin-left">6</property>
+            <property name="valign">center</property>
+            <property name="visible">True</property>
+            <style>
+              <class name="image-button"/>
+            </style>
+            <child>
+              <object class="GtkImage" id="search_button_image">
+                <property name="can_focus">False</property>
+                <property name="icon_name">edit-find-symbolic</property>
+                <property name="icon_size">1</property>
+                <property name="visible">True</property>
+              </object>
+            </child>
+          </object>
+          <packing>
+            <property name="pack_type">start</property>
+          </packing>
+        </child>
+        <child>
+          <object class="GtkButton" id="add_button">
+            <property name="can_focus">True</property>
+            <property name="focus_on_click">False</property>
+            <property name="valign">center</property>
+            <property name="visible">True</property>
+            <style>
+              <class name="image-button"/>
+            </style>
+            <child>
+              <object class="GtkImage" id="add_button_image">
+                <property name="can_focus">False</property>
+                <property name="icon_name">list-add-symbolic</property>
+                <property name="icon_size">1</property>
+                <property name="visible">True</property>
+              </object>
+            </child>
+          </object>
+          <packing>
+            <property name="pack_type">end</property>
+          </packing>
+        </child>
+      </object>
+    </child>
+    <child>
+      <object class="GtkHeaderBar" id="toolbar_right">
+        <property name="can_focus">False</property>
+        <property name="hexpand">True</property>
+        <property name="hpadding">6</property>
+        <property name="show-close-button">True</property>
+        <property name="visible">True</property>
+      </object>
+    </child>
+  </template>
+</interface>

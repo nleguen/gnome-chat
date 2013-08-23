@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<interface domain="gnome-chat">
+  <!-- interface-requires gtk+ 3.10 -->
+  <template class="ChatMainWindow" parent="GtkApplicationWindow">
+    <property name="can_focus">False</property>
+    <property name="window_position">center</property>
+    <child>
+      <object class="ChatEmbed" id="embed">
+      </object>
+    </child>
+  </template>
+</interface>

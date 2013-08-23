@@ -1,0 +1,14 @@
+Chat - instant messaging client for GNOME
+=========================================
+
+Bugs: https://bugzilla.gnome.org/enter_bug.cgi?product=gnome-chat
+Design: https://live.gnome.org/Design/Apps/Chat
+Download: http://download.gnome.org/sources/gnome-chat
+Git: http://git.gnome.org/browse/gnome-chat
+Website: https://wiki.gnome.org/Apps/Chat
+
+----
+
+Chat is licensed under the GNU Lesser General Public License as
+published by the Free Software Foundation, either version 2.1 of the
+License, or (at your option) any later version.

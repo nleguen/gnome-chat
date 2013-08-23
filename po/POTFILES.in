@@ -1,0 +1,8 @@
+# List of source files containing translatable strings.
+# Please keep this list sorted alphabetically.
+
+data/gnome-chat.desktop.in.in
+data/org.gnome.chat.gschema.xml.in
+[type: gettext/glade]src/chat-app-menu.ui
+[type: gettext/glade]src/chat-main-toolbar.ui
+src/chat-main-window.c
