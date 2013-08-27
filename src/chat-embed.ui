@@ -9,6 +9,7 @@
       <object class="GtkRevealer" id="revealer">
         <property name="can_focus">False</property>
         <property name="hexpand">False</property>
+        <property name="reveal_child">True</property>
         <property name="transition_type">slide-right</property>
         <property name="visible">True</property>
         <child>
@@ -19,6 +20,31 @@
             <style>
               <class name="sidebar"/>
             </style>
+            <child>
+              <object class="GtkGrid" id="grid0">
+                <property name="can_focus">False</property>
+                <property name="hexpand">False</property>
+                <property name="orientation">vertical</property>
+                <property name="visible">True</property>
+                <child>
+                  <object class="GtkScrolledWindow" id="sw0">
+                    <property name="can_focus">True</property>
+                    <property name="hexpand">True</property>
+                    <property name="hscrollbar_policy">never</property>
+                    <property name="vexpand">True</property>
+                    <property name="visible">True</property>
+                    <child>
+                      <object class="ChatConversationsList" id="conversations_list">
+                        <property name="can_focus">True</property>
+                        <property name="hexpand">True</property>
+                        <property name="vexpand">True</property>
+                        <property name="visible">True</property>
+                      </object>
+                    </child>
+                  </object>
+                </child>
+              </object>
+            </child>
           </object>
         </child>
       </object>

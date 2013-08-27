@@ -22,6 +22,7 @@
 #include "config.h"
 
 #include "chat-application.h"
+#include "chat-conversations-list.h"
 #include "chat-embed.h"
 #include "chat-main-toolbar.h"
 #include "polari-fixed-size-frame.h"
@@ -95,6 +96,7 @@ chat_embed_class_init (ChatEmbedClass *class)
 
   object_class->dispose = chat_embed_dispose;
 
+  g_type_ensure (CHAT_TYPE_CONVERSATIONS_LIST);
   g_type_ensure (POLARI_TYPE_FIXED_SIZE_FRAME);
   gtk_widget_class_set_template_from_resource (widget_class, "/org/gnome/chat/embed.ui");
   gtk_widget_class_bind_template_child_private (widget_class, ChatEmbed, sidebar_frame);
