@@ -22,6 +22,8 @@ gnome_chat_SOURCES = \
 	chat-application.h \
 	chat-client-factory.c \
 	chat-client-factory.h \
+	chat-conversations-list.c \
+	chat-conversations-list.h \
 	chat-embed.c \
 	chat-embed.h \
 	chat-main-toolbar.c \
@@ -58,6 +60,7 @@ AM_CPPFLAGS = \
 	$(GLIB_CFLAGS) \
 	$(GTK_CFLAGS) \
 	$(TP_GLIB_CFLAGS) \
+	$(TP_LOGGER_CFLAGS) \
 	$(WARN_CFLAGS) \
 	$(NULL)
 
@@ -68,6 +71,7 @@ gnome_chat_LDADD = \
 	$(GLIB_LIBS) \
 	$(GTK_LIBS) \
 	$(TP_GLIB_LIBS) \
+	$(TP_LOGGER_LIBS) \
 	$(NULL)
 
 CLEANFILES = \
