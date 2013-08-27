@@ -20,6 +20,8 @@ gnome_chat_SOURCES = \
 	polari-fixed-size-frame.h \
 	chat-application.c \
 	chat-application.h \
+	chat-client-factory.c \
+	chat-client-factory.h \
 	chat-embed.c \
 	chat-embed.h \
 	chat-main-toolbar.c \
@@ -55,6 +57,7 @@ AM_CPPFLAGS = \
 	$(GIO_CFLAGS) \
 	$(GLIB_CFLAGS) \
 	$(GTK_CFLAGS) \
+	$(TP_GLIB_CFLAGS) \
 	$(WARN_CFLAGS) \
 	$(NULL)
 
@@ -64,6 +67,7 @@ gnome_chat_LDADD = \
 	$(GIO_LIBS) \
 	$(GLIB_LIBS) \
 	$(GTK_LIBS) \
+	$(TP_GLIB_LIBS) \
 	$(NULL)
 
 CLEANFILES = \
