@@ -23,8 +23,10 @@
 
 #include <gio/gio.h>
 #include <glib.h>
+#include <telepathy-glib/telepathy-glib.h>
 
 #include "chat-application.h"
+#include "chat-client-factory.h"
 #include "chat-main-window.h"
 #include "chat-mode-controller.h"
 #include "chat-resources.h"
@@ -72,8 +74,16 @@ chat_application_startup (GApplication *application)
   GMenu *menu;
   GSimpleAction *action;
   GtkBuilder *builder;
+  TpAccountManager *am;
+  TpSimpleClientFactory *factory;
 
   G_APPLICATION_CLASS (chat_application_parent_class)->startup (application);
+
+  factory = chat_client_factory_dup_singleton ();
+  am = tp_account_manager_new_with_factory (factory);
+  tp_account_manager_set_default (am);
+  g_object_unref (factory);
+  g_object_unref (am);
 
   priv->resource = chat_get_resource ();
   g_resources_register (priv->resource);
