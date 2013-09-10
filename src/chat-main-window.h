@@ -69,6 +69,8 @@ GtkWidget             *chat_main_window_new                    (GtkApplication *
 
 void                   chat_main_window_show_about             (ChatMainWindow *self);
 
+void                   chat_main_window_add_conversation_cb    (ChatMainWindow *self);
+
 G_END_DECLS
 
 #endif /* CHAT_MAIN_WINDOW_H */

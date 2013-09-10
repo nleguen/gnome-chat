@@ -42,6 +42,7 @@
             <property name="focus_on_click">False</property>
             <property name="valign">center</property>
             <property name="visible">True</property>
+            <property name="action_name">win.add-conversation</property>
             <style>
               <class name="image-button"/>
             </style>

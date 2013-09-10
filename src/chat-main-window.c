@@ -25,6 +25,7 @@
 #include <glib/gi18n.h>
 
 #include "chat-about-data.h"
+#include "chat-contacts-list-dialog.h"
 #include "chat-embed.h"
 #include "chat-main-window.h"
 #include "chat-settings.h"
@@ -158,11 +159,11 @@ chat_main_window_dispose (GObject *object)
   G_OBJECT_CLASS (chat_main_window_parent_class)->dispose (object);
 }
 
-
 static void
 chat_main_window_init (ChatMainWindow *self)
 {
   ChatMainWindowPrivate *priv;
+  GSimpleAction *action;
   GVariant *variant;
   gboolean maximized;
   const gint32 *position;
@@ -173,6 +174,11 @@ chat_main_window_init (ChatMainWindow *self)
   priv = self->priv;
 
   gtk_widget_init_template (GTK_WIDGET (self));
+
+  action = g_simple_action_new ("add-conversation", NULL);
+  g_signal_connect_swapped (action, "activate", G_CALLBACK (chat_main_window_add_conversation_cb), self);
+  g_action_map_add_action (G_ACTION_MAP (self), G_ACTION (action));
+  g_object_unref (action);
 
   priv->settings = chat_settings_dup_singleton ();
 
@@ -250,4 +256,14 @@ chat_main_window_show_about (ChatMainWindow *self)
 
   gtk_widget_show (about_dialog);
   g_signal_connect (about_dialog, "response", G_CALLBACK (gtk_widget_destroy), NULL);
+}
+
+void chat_main_window_add_conversation_cb (ChatMainWindow *self)
+{
+  GtkWidget *contact_lists;
+
+  contact_lists = chat_contacts_list_dialog_new ();
+  gtk_window_set_transient_for (GTK_WINDOW (contact_lists), GTK_WINDOW (self));
+
+  gtk_widget_show_all (contact_lists);
 }
