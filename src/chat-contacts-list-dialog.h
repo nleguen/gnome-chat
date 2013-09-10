@@ -1,6 +1,6 @@
 /*
  * Chat - instant messaging client for GNOME
- * Copyright © 2013 Red Hat, Inc.
+ * Copyright © 2013 Yosef Or Boczko <yoseforb@gmail.com>
  *
  * This program is free software; you can redistribute it and/or
  * modify it under the terms of the GNU Lesser General Public License
