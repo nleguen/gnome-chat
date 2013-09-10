@@ -53,6 +53,7 @@ EXTRA_DIST = \
 	chat-embed.ui \
 	chat-main-toolbar.ui \
 	chat-main-window.ui \
+	chat.css \
 	chat-marshalers.list \
 	$(NULL)
 

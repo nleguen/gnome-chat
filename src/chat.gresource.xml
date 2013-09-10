@@ -6,5 +6,6 @@
     <file alias="contacts-list-dialog.ui" preprocess="xml-stripblanks" compressed="true">chat-contacts-list-dialog.ui</file>
     <file alias="main-toolbar.ui" preprocess="xml-stripblanks" compressed="true">chat-main-toolbar.ui</file>
     <file alias="main-window.ui" preprocess="xml-stripblanks" compressed="true">chat-main-window.ui</file>
+    <file>chat.css</file>
   </gresource>
 </gresources>

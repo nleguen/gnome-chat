@@ -1,0 +1,9 @@
+.chat-left-header-bar:dir(ltr),
+.chat-right-header-bar:dir(rtl) {
+  border-top-right-radius: 0;
+}
+
+.chat-right-header-bar:dir(ltr),
+.chat-left-header-bar:dir(rtl) {
+  border-top-left-radius: 0;
+}

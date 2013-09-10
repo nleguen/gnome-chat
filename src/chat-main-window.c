@@ -163,12 +163,15 @@ static void
 chat_main_window_init (ChatMainWindow *self)
 {
   ChatMainWindowPrivate *priv;
+  GtkCssProvider *css_provider;
   GSimpleAction *action;
   GVariant *variant;
   gboolean maximized;
   const gint32 *position;
   const gint32 *size;
   gsize n_elements;
+  GFile *file;
+  GError *error = NULL;
 
   self->priv = chat_main_window_get_instance_private (self);
   priv = self->priv;
@@ -179,6 +182,20 @@ chat_main_window_init (ChatMainWindow *self)
   g_signal_connect_swapped (action, "activate", G_CALLBACK (chat_main_window_add_conversation_cb), self);
   g_action_map_add_action (G_ACTION_MAP (self), G_ACTION (action));
   g_object_unref (action);
+
+  css_provider = gtk_css_provider_new ();
+  file = g_file_new_for_uri ("resource:///org/gnome/chat/chat.css");
+  if (!gtk_css_provider_load_from_file (css_provider, file, &error))
+    {
+      g_warning ("Failed to add window style %s\n", error->message);
+      g_error_free (error);
+    }
+  else
+    {
+      gtk_style_context_add_provider_for_screen (gtk_window_get_screen (GTK_WINDOW (self)),
+                                                 (GtkStyleProvider *) css_provider,
+                                                 GTK_STYLE_PROVIDER_PRIORITY_APPLICATION);
+    }
 
   priv->settings = chat_settings_dup_singleton ();
 
