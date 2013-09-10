@@ -304,5 +304,5 @@ chat_conversations_list_class_init (ChatConversationsListClass *class)
 GtkWidget *
 chat_conversations_list_new (void)
 {
-  return g_object_new (CHAT_TYPE_CONVERSATIONS_LIST, NULL);
+  return g_object_new (CHAT_TYPE_CONVERSATIONS_LIST, "selection-mode", GTK_SELECTION_NONE, NULL);
 }
