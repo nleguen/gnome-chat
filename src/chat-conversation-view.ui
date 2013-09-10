@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<interface domain="gnome-chat">
+  <!-- interface-requires gtk+ 3.10 -->
+  <template class="ChatConversationView" parent="GtkTextView">
+    <property name="can_focus">True</property>
+    <property name="cursor_visible">False</property>
+    <property name="editable">False</property>
+    <property name="hexpand">True</property>
+    <property name="vexpand">True</property>
+    <property name="visible">True</property>
+    <property name="wrap_mode">word-char</property>
+  </template>
+</interface>

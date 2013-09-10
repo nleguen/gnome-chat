@@ -24,6 +24,8 @@ gnome_chat_SOURCES = \
 	chat-client-factory.h \
 	chat-contacts-list-dialog.c \
 	chat-contacts-list-dialog.h \
+	chat-conversation-view.c \
+	chat-conversation-view.h \
 	chat-conversations-list.c \
 	chat-conversations-list.h \
 	chat-embed.c \
@@ -50,6 +52,7 @@ EXTRA_DIST = \
 	chat.gresource.xml \
 	chat-app-menu.ui \
 	chat-contacts-list-dialog.ui \
+	chat-conversation-view.ui \
 	chat-embed.ui \
 	chat-main-toolbar.ui \
 	chat-main-window.ui \

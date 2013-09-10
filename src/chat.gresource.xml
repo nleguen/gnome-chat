@@ -4,6 +4,7 @@
     <file alias="app-menu.ui" preprocess="xml-stripblanks" compressed="true">chat-app-menu.ui</file>
     <file alias="embed.ui" preprocess="xml-stripblanks" compressed="true">chat-embed.ui</file>
     <file alias="contacts-list-dialog.ui" preprocess="xml-stripblanks" compressed="true">chat-contacts-list-dialog.ui</file>
+    <file alias="conversation-view.ui" preprocess="xml-stripblanks" compressed="true">chat-conversation-view.ui</file>
     <file alias="main-toolbar.ui" preprocess="xml-stripblanks" compressed="true">chat-main-toolbar.ui</file>
     <file alias="main-window.ui" preprocess="xml-stripblanks" compressed="true">chat-main-window.ui</file>
     <file>chat.css</file>
