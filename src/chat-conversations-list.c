@@ -106,6 +106,8 @@ chat_conversations_list_add_row (ChatConversationsList *self, TpContact *contact
   gtk_container_add (GTK_CONTAINER (row), grid);
   gtk_container_add (GTK_CONTAINER (self), row);
 
+  g_object_set_data_full (G_OBJECT (row), "chat-conversations-list-contact", g_object_ref (contact), g_object_unref);
+
   alias = tp_contact_get_alias (contact);
   message = tpl_text_event_get_message (TPL_TEXT_EVENT (event));
   markup = g_markup_printf_escaped ("<b>%s</b>\n%s", alias, message);
