@@ -11,6 +11,10 @@
         <property name="hexpand">False</property>
         <property name="title" translatable="yes">Conversations</property>
         <property name="visible">True</property>
+        <style>
+          <class name="chat-left-header-bar"/>
+          <class name="titlebar"/>
+        </style>
         <child>
           <object class="GtkToggleButton" id="search_button">
             <property name="can_focus">True</property>
@@ -65,6 +69,10 @@
         <property name="hexpand">True</property>
         <property name="show-close-button">True</property>
         <property name="visible">True</property>
+        <style>
+          <class name="chat-right-header-bar"/>
+          <class name="titlebar"/>
+        </style>
       </object>
     </child>
   </template>
