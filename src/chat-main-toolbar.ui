@@ -9,10 +9,8 @@
       <object class="GtkHeaderBar" id="toolbar_left">
         <property name="can_focus">False</property>
         <property name="hexpand">False</property>
-        <property name="hpadding">0</property>
         <property name="title" translatable="yes">Conversations</property>
         <property name="visible">True</property>
-        <property name="vpadding">0</property>
         <child>
           <object class="GtkToggleButton" id="search_button">
             <property name="can_focus">True</property>
@@ -65,7 +63,6 @@
       <object class="GtkHeaderBar" id="toolbar_right">
         <property name="can_focus">False</property>
         <property name="hexpand">True</property>
-        <property name="hpadding">6</property>
         <property name="show-close-button">True</property>
         <property name="visible">True</property>
       </object>
