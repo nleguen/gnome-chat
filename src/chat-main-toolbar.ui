@@ -19,7 +19,6 @@
           <object class="GtkToggleButton" id="search_button">
             <property name="can_focus">True</property>
             <property name="focus_on_click">False</property>
-            <property name="margin-left">6</property>
             <property name="valign">center</property>
             <property name="visible">True</property>
             <style>
