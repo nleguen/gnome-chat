@@ -5,8 +5,8 @@
     <property name="can_focus">False</property>
     <property name="title" translatable="yes">Contacts</property>
     <property name="modal">True</property>
-    <property name="default_width">320</property>
-    <property name="default_height">260</property>
+    <property name="default_width">400</property>
+    <property name="default_height">600</property>
     <property name="destroy_with_parent">True</property>
     <property name="type_hint">dialog</property>
     <child internal-child="vbox">
