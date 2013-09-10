@@ -79,6 +79,9 @@ chat_client_factory_dup_contact_features (TpSimpleClientFactory *factory, TpConn
   feature = TP_CONTACT_FEATURE_AVATAR_TOKEN;
   g_array_append_val (features, feature);
 
+  feature = TP_CONTACT_FEATURE_PRESENCE;
+  g_array_append_val (features, feature);
+
   return features;
 }
 
