@@ -60,6 +60,13 @@
         <property name="hexpand">True</property>
         <property name="orientation">vertical</property>
         <property name="visible">True</property>
+        <child>
+          <object class="GtkStack" id="conversations_stack">
+            <property name="can_focus">False</property>
+            <property name="transition_type">crossfade</property>
+            <property name="visible">True</property>
+          </object>
+        </child>
       </object>
       <packing>
         <property name="expand">True</property>
