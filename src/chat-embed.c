@@ -29,6 +29,8 @@
 #include "chat-conversations-list.h"
 #include "chat-embed.h"
 #include "chat-main-toolbar.h"
+#include "empathy-ui-utils.h"
+#include "empathy-utils.h"
 #include "polari-fixed-size-frame.h"
 
 
@@ -44,6 +46,8 @@ struct _ChatEmbedPrivate
   GtkWidget *sidebar_frame;
   GtkWidget *status_area;
   GtkWidget *status_area_label;
+  GtkWidget *status_area_presence_icon;
+  GtkWidget *status_area_presence_message;
   GtkWidget *toolbar;
   TplLogManager *lm;
 };
@@ -117,11 +121,14 @@ chat_embed_row_activated (ChatEmbed *self, GtkListBoxRow *row)
   ChatEmbedPrivate *priv = self->priv;
   GtkWidget *sw;
   TpAccount *account;
+  TpConnectionPresenceType presence;
   TpContact *contact;
   TplEntity *entity;
+  const gchar *icon_name;
   const gchar *identifier;
   const gchar *nickname;
   gchar *markup = NULL;
+  gchar *status_message = NULL;
 
   contact = g_object_get_data (G_OBJECT (row), "chat-conversations-list-contact");
   account = tp_contact_get_account (contact);
@@ -129,6 +136,13 @@ chat_embed_row_activated (ChatEmbed *self, GtkListBoxRow *row)
   nickname = tp_account_get_nickname (account);
   markup = g_markup_printf_escaped ("<b>%s</b>", nickname);
   gtk_label_set_markup (GTK_LABEL (priv->status_area_label), markup);
+
+  presence = tp_account_get_current_presence (account, NULL, &status_message);
+  if (status_message == NULL)
+    status_message = g_strdup (empathy_presence_get_default_message (presence));
+  icon_name = empathy_icon_name_for_presence (presence);
+  gtk_image_set_from_icon_name (GTK_IMAGE (priv->status_area_presence_icon), icon_name, GTK_ICON_SIZE_MENU);
+  gtk_label_set_label (GTK_LABEL (priv->status_area_presence_message), status_message);
 
   identifier = tp_contact_get_identifier (contact);
   priv->current_view = g_hash_table_lookup (priv->conversations, identifier);
@@ -165,6 +179,7 @@ chat_embed_row_activated (ChatEmbed *self, GtkListBoxRow *row)
  out:
   gtk_stack_set_visible_child_name (GTK_STACK (priv->conversations_stack), identifier);
   g_free (markup);
+  g_free (status_message);
 }
 
 
@@ -247,6 +262,8 @@ chat_embed_class_init (ChatEmbedClass *class)
   gtk_widget_class_bind_template_child_private (widget_class, ChatEmbed, sidebar_frame);
   gtk_widget_class_bind_template_child_private (widget_class, ChatEmbed, status_area);
   gtk_widget_class_bind_template_child_private (widget_class, ChatEmbed, status_area_label);
+  gtk_widget_class_bind_template_child_private (widget_class, ChatEmbed, status_area_presence_icon);
+  gtk_widget_class_bind_template_child_private (widget_class, ChatEmbed, status_area_presence_message);
 }
 
 

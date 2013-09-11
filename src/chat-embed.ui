@@ -55,14 +55,51 @@
                         <property name="vexpand">False</property>
                         <property name="visible">True</property>
                         <child>
-                          <object class="GtkLabel" id="status_area_label">
+                          <object class="GtkGrid" id="status_area_grid1">
                             <property name="can_focus">False</property>
-                            <property name="ellipsize">end</property>
-                            <property name="halign">start</property>
                             <property name="hexpand">True</property>
-                            <property name="valign">center</property>
-                            <property name="vexpand">True</property>
+                            <property name="orientation">vertical</property>
+                            <property name="vexpand">False</property>
                             <property name="visible">True</property>
+                            <child>
+                              <object class="GtkLabel" id="status_area_label">
+                                <property name="can_focus">False</property>
+                                <property name="ellipsize">end</property>
+                                <property name="halign">start</property>
+                                <property name="hexpand">True</property>
+                                <property name="valign">center</property>
+                                <property name="vexpand">True</property>
+                                <property name="visible">True</property>
+                              </object>
+                            </child>
+                            <child>
+                              <object class="GtkGrid" id="status_area_grid2">
+                                <property name="can_focus">False</property>
+                                <property name="column_spacing">3</property>
+                                <property name="hexpand">True</property>
+                                <property name="orientation">horizontal</property>
+                                <property name="vexpand">False</property>
+                                <property name="visible">True</property>
+                                <child>
+                                  <object class="GtkImage" id="status_area_presence_icon">
+                                    <property name="can_focus">False</property>
+                                    <property name="icon_size">1</property>
+                                    <property name="visible">True</property>
+                                  </object>
+                                </child>
+                                <child>
+                                  <object class="GtkLabel" id="status_area_presence_message">
+                                    <property name="can_focus">False</property>
+                                    <property name="ellipsize">end</property>
+                                    <property name="halign">start</property>
+                                    <property name="hexpand">True</property>
+                                    <property name="valign">center</property>
+                                    <property name="vexpand">True</property>
+                                    <property name="visible">True</property>
+                                  </object>
+                                </child>
+                              </object>
+                            </child>
                           </object>
                         </child>
                       </object>
