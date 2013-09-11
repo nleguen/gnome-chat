@@ -35,11 +35,14 @@
 struct _ChatEmbedPrivate
 {
   GHashTable *conversations;
+  GtkSizeGroup *size_group_bottom;
   GtkSizeGroup *size_group_left;
   GtkWidget *conversations_list;
   GtkWidget *current_view;
   GtkWidget *conversations_stack;
+  GtkWidget *main_input_area;
   GtkWidget *sidebar_frame;
+  GtkWidget *status_area;
   GtkWidget *toolbar;
   TplLogManager *lm;
 };
@@ -176,6 +179,7 @@ chat_embed_dispose (GObject *object)
       priv->conversations = NULL;
     }
 
+  g_clear_object (&priv->size_group_bottom);
   g_clear_object (&priv->size_group_left);
   g_clear_object (&priv->lm);
 
@@ -206,6 +210,10 @@ chat_embed_init (ChatEmbed *self)
   priv->toolbar = chat_main_toolbar_new ();
   toolbar_left = chat_main_toolbar_get_toolbar_left (CHAT_MAIN_TOOLBAR (priv->toolbar));
 
+  priv->size_group_bottom = gtk_size_group_new (GTK_SIZE_GROUP_VERTICAL);
+  gtk_size_group_add_widget (priv->size_group_bottom, priv->status_area);
+  gtk_size_group_add_widget (priv->size_group_bottom, priv->main_input_area);
+
   priv->size_group_left = gtk_size_group_new (GTK_SIZE_GROUP_HORIZONTAL);
   gtk_size_group_add_widget (priv->size_group_left, priv->sidebar_frame);
   gtk_size_group_add_widget (priv->size_group_left, toolbar_left);
@@ -227,7 +235,9 @@ chat_embed_class_init (ChatEmbedClass *class)
   gtk_widget_class_set_template_from_resource (widget_class, "/org/gnome/chat/embed.ui");
   gtk_widget_class_bind_template_child_private (widget_class, ChatEmbed, conversations_list);
   gtk_widget_class_bind_template_child_private (widget_class, ChatEmbed, conversations_stack);
+  gtk_widget_class_bind_template_child_private (widget_class, ChatEmbed, main_input_area);
   gtk_widget_class_bind_template_child_private (widget_class, ChatEmbed, sidebar_frame);
+  gtk_widget_class_bind_template_child_private (widget_class, ChatEmbed, status_area);
 }
 
 
