@@ -55,6 +55,22 @@ PKG_CHECK_MODULES(TP_LOGGER, [telepathy-logger-0.2 >= $TP_LOGGER_MIN_VERSION])
 GLIB_COMPILE_RESOURCES=`$PKG_CONFIG --variable glib_compile_resources gio-2.0`
 AC_SUBST(GLIB_COMPILE_RESOURCES)
 
+# telepathy-account-widgets
+
+prev_top_build_prefix=$ac_top_build_prefix
+prev_ac_configure_args=$ac_configure_args
+ac_configure_args="$ac_configure_args --with-cheese=no --disable-gudev"
+ac_configure_args="$ac_configure_args --with-pkgdatadir=${datadir}/gnome-chat"
+ac_configure_args="$ac_configure_args --with-icondir=${datadir}/icons"
+ac_configure_args="$ac_configure_args --with-gettext-package=gnome-chat-tpaw"
+ac_configure_args="$ac_configure_args --disable-schemas-compile --disable-settings"
+AX_CONFIG_DIR([telepathy-account-widgets])
+ac_top_build_prefix=$prev_top_build_prefix
+ac_configure_args=$prev_ac_configure_args
+
+export PKG_CONFIG_PATH=$PKG_CONFIG_PATH:"$ac_top_build_prefix"telepathy-account-widgets/
+PKG_CHECK_MODULES(TPAW, telepathy-account-widgets)
+
 AC_CONFIG_FILES([
 Makefile
 data/Makefile

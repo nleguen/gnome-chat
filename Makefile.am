@@ -1,4 +1,6 @@
-SUBDIRS = . data src po
+ACLOCAL_AMFLAGS = -I m4 -I telepathy-account-widgets ${ACLOCAL_FLAGS}
+
+SUBDIRS = . data telepathy-account-widgets src po
 
 INTLTOOL_FILES = \
 	intltool-extract.in \

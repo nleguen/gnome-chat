@@ -73,6 +73,7 @@ AM_CPPFLAGS = \
 	$(GTK_CFLAGS) \
 	$(TP_GLIB_CFLAGS) \
 	$(TP_LOGGER_CFLAGS) \
+	$(TPAW_CFLAGS) \
 	$(WARN_CFLAGS) \
 	$(NULL)
 
@@ -84,6 +85,7 @@ gnome_chat_LDADD = \
 	$(GTK_LIBS) \
 	$(TP_GLIB_LIBS) \
 	$(TP_LOGGER_LIBS) \
+	$(TPAW_LIBS) \
 	$(NULL)
 
 CLEANFILES = \

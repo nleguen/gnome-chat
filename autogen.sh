@@ -17,6 +17,11 @@ which gnome-autogen.sh || {
     exit 1
 }
 
+git submodule update --init --recursive
+
+cd telepathy-account-widgets
+sh autogen.sh --no-configure
+cd ..
 
 REQUIRED_AUTOCONF_VERSION=2.63
 REQUIRED_AUTOMAKE_VERSION=1.11
