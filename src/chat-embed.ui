@@ -43,6 +43,32 @@
                     </child>
                   </object>
                 </child>
+                <child>
+                  <object class="GtkFrame" id="status_area">
+                    <property name="can_focus">False</property>
+                    <property name="visible">True</property>
+                    <child>
+                      <object class="GtkGrid" id="status_area_grid">
+                        <property name="can_focus">False</property>
+                        <property name="hexpand">True</property>
+                        <property name="orientation">horizontal</property>
+                        <property name="vexpand">False</property>
+                        <property name="visible">True</property>
+                        <child>
+                          <object class="GtkLabel" id="status_area_label">
+                            <property name="can_focus">False</property>
+                            <property name="ellipsize">end</property>
+                            <property name="halign">start</property>
+                            <property name="hexpand">True</property>
+                            <property name="valign">center</property>
+                            <property name="vexpand">True</property>
+                            <property name="visible">True</property>
+                          </object>
+                        </child>
+                      </object>
+                    </child>
+                  </object>
+                </child>
               </object>
             </child>
           </object>
