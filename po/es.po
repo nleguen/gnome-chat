@@ -1,0 +1,106 @@
+# Spanish translation for gnome-chat.
+# Copyright (C) 2013 gnome-chat's COPYRIGHT HOLDER
+# This file is distributed under the same license as the gnome-chat package.
+# Daniel Mustieles <daniel.mustieles@gmail.com>, 2013.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: gnome-chat master\n"
+"Report-Msgid-Bugs-To: http://bugzilla.gnome.org/enter_bug.cgi?product=gnome-"
+"chat&keywords=I18N+L10N&component=general\n"
+"POT-Creation-Date: 2013-09-11 14:01+0000\n"
+"PO-Revision-Date: 2013-09-11 17:46+0200\n"
+"Last-Translator: Daniel Mustieles <daniel.mustieles@gmail.com>\n"
+"Language-Team: Español <gnome-es-list@gnome.org>\n"
+"Language: es\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n!=1);\n"
+
+#: ../data/gnome-chat.desktop.in.in.h:1
+msgid "Chat"
+msgstr "Chat"
+
+#: ../data/gnome-chat.desktop.in.in.h:2
+msgid "Instant messaging client"
+msgstr "Cliente de mensajería instantánea"
+
+#: ../data/gnome-chat.desktop.in.in.h:3
+msgid "Chat;Talk;IM;Message;VOIP;GTalk;Facebook;Jabber;"
+msgstr "Chat;Hablar;Conversación;IM;Mensaje;VOIP;GTalk;Facebook;Jabber;"
+
+#: ../data/org.gnome.chat.gschema.xml.in.h:1
+msgid "Window size"
+msgstr "Tamaño de la ventana"
+
+#: ../data/org.gnome.chat.gschema.xml.in.h:2
+msgid "Window size (width and height)."
+msgstr "Tamaño de la ventana (anchura y altura)."
+
+#: ../data/org.gnome.chat.gschema.xml.in.h:3
+msgid "Window position"
+msgstr "Posición de la ventana"
+
+#: ../data/org.gnome.chat.gschema.xml.in.h:4
+msgid "Window position (x and y)."
+msgstr "Posición de la ventana (X e Y)."
+
+#: ../data/org.gnome.chat.gschema.xml.in.h:5
+msgid "Window maximized"
+msgstr "Ventana maximizada"
+
+#: ../data/org.gnome.chat.gschema.xml.in.h:6
+msgid "Window maximized state"
+msgstr "Estado maximizado de la ventana"
+
+#: ../src/chat-app-menu.ui.h:1
+msgid "About Chat"
+msgstr "Acerca de Chat"
+
+#: ../src/chat-app-menu.ui.h:2
+msgid "Quit"
+msgstr "Salir"
+
+#: ../src/chat-contacts-list-dialog.ui.h:1
+msgid "Contacts"
+msgstr "Contactos"
+
+#: ../src/chat-main-toolbar.ui.h:1
+msgid "Conversations"
+msgstr "Conversaciones"
+
+#: ../src/chat-main-window.c:262
+msgid "Instant messaging client for GNOME"
+msgstr "Cliente de mensajería instantánea para GNOME"
+
+#. Translators: Put your names here
+#: ../src/chat-main-window.c:272
+msgid "translator-credits"
+msgstr "Daniel Mustieles <daniel.mustieles@gmail.com>, 2013"
+
+#: ../src/empathy-utils.c:36
+msgid "Available"
+msgstr "Disponible"
+
+#: ../src/empathy-utils.c:38
+msgid "Busy"
+msgstr "Ocupado"
+
+#: ../src/empathy-utils.c:41
+msgid "Away"
+msgstr "Ausente"
+
+#: ../src/empathy-utils.c:43
+msgid "Invisible"
+msgstr "Invisible"
+
+#: ../src/empathy-utils.c:45
+msgid "Offline"
+msgstr "Desconectado"
+
+#. translators: presence type is unknown
+#: ../src/empathy-utils.c:48
+msgctxt "presence"
+msgid "Unknown"
+msgstr "Desconocido"
