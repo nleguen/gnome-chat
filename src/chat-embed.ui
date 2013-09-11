@@ -55,7 +55,7 @@
       </packing>
     </child>
     <child>
-      <object class="GtkBox" id="vbox">
+      <object class="GtkGrid" id="grid_right">
         <property name="can_focus">False</property>
         <property name="hexpand">True</property>
         <property name="orientation">vertical</property>
