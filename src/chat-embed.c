@@ -183,6 +183,35 @@ chat_embed_row_activated (ChatEmbed *self, GtkListBoxRow *row)
 }
 
 
+static gboolean
+chat_embed_select_first_conversation (gpointer user_data)
+{
+  ChatEmbed *self = CHAT_EMBED (user_data);
+  GtkListBoxRow *row;
+
+  row = gtk_list_box_get_row_at_index (GTK_LIST_BOX (self->priv->conversations_list), 0);
+  chat_embed_row_activated (self, row);
+
+  return G_SOURCE_REMOVE;
+}
+
+
+static void
+chat_embed_conversation_add (ChatEmbed *self, GtkWidget *widget)
+{
+  static gboolean first_row = TRUE;
+
+  if (!first_row)
+    return;
+
+  g_idle_add_full (G_PRIORITY_DEFAULT_IDLE,
+                   chat_embed_select_first_conversation,
+                   g_object_ref (self),
+                   g_object_unref);
+  first_row = FALSE;
+}
+
+
 static void
 chat_embed_window_added (ChatEmbed *self, GtkWindow *window)
 {
@@ -241,6 +270,7 @@ chat_embed_init (ChatEmbed *self)
   gtk_size_group_add_widget (priv->size_group_left, priv->sidebar_frame);
   gtk_size_group_add_widget (priv->size_group_left, toolbar_left);
 
+  g_signal_connect_swapped (priv->conversations_list, "add", G_CALLBACK (chat_embed_conversation_add), self);
   g_signal_connect_swapped (priv->conversations_list, "row-activated", G_CALLBACK (chat_embed_row_activated), self);
 }
 
