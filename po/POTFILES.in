@@ -6,3 +6,4 @@ data/org.gnome.chat.gschema.xml.in
 [type: gettext/glade]src/chat-contacts-list-dialog.ui
 [type: gettext/glade]src/chat-main-toolbar.ui
 src/chat-main-window.c
+src/empathy-utils.c

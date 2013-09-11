@@ -16,6 +16,11 @@ nodist_gnome_chat_SOURCES = \
 	$(NULL)
 
 gnome_chat_SOURCES = \
+	empathy-images.h \
+	empathy-ui-utils.c \
+	empathy-ui-utils.h \
+	empathy-utils.c \
+	empathy-utils.h \
 	polari-fixed-size-frame.c \
 	polari-fixed-size-frame.h \
 	chat-application.c \
