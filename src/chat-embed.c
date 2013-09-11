@@ -23,6 +23,7 @@
 
 #include <telepathy-glib/telepathy-glib.h>
 #include <telepathy-logger/telepathy-logger.h>
+#include <tp-account-widgets/tpaw-avatar-chooser.h>
 
 #include "chat-application.h"
 #include "chat-conversation-view.h"
@@ -39,12 +40,15 @@ struct _ChatEmbedPrivate
   GHashTable *conversations;
   GtkSizeGroup *size_group_bottom;
   GtkSizeGroup *size_group_left;
+  GtkWidget *avatar_chooser;
   GtkWidget *conversations_list;
   GtkWidget *current_view;
   GtkWidget *conversations_stack;
   GtkWidget *main_input_area;
   GtkWidget *sidebar_frame;
   GtkWidget *status_area;
+  GtkWidget *status_area_grid0;
+  GtkWidget *status_area_grid1;
   GtkWidget *status_area_nickname;
   GtkWidget *status_area_presence_icon;
   GtkWidget *status_area_presence_message;
@@ -132,6 +136,18 @@ chat_embed_row_activated (ChatEmbed *self, GtkListBoxRow *row)
 
   contact = g_object_get_data (G_OBJECT (row), "chat-conversations-list-contact");
   account = tp_contact_get_account (contact);
+
+  if (priv->avatar_chooser != NULL)
+    gtk_widget_destroy (priv->avatar_chooser);
+  priv->avatar_chooser = tpaw_avatar_chooser_new (account);
+  gtk_button_set_relief (GTK_BUTTON (priv->avatar_chooser), GTK_RELIEF_NONE);
+  gtk_grid_attach_next_to (GTK_GRID (priv->status_area_grid0),
+                           priv->avatar_chooser,
+                           priv->status_area_grid1,
+                           GTK_POS_LEFT,
+                           2,
+                           2);
+  gtk_widget_show (priv->avatar_chooser);
 
   nickname = tp_account_get_nickname (account);
   markup = g_markup_printf_escaped ("<b>%s</b>", nickname);
@@ -291,6 +307,8 @@ chat_embed_class_init (ChatEmbedClass *class)
   gtk_widget_class_bind_template_child_private (widget_class, ChatEmbed, main_input_area);
   gtk_widget_class_bind_template_child_private (widget_class, ChatEmbed, sidebar_frame);
   gtk_widget_class_bind_template_child_private (widget_class, ChatEmbed, status_area);
+  gtk_widget_class_bind_template_child_private (widget_class, ChatEmbed, status_area_grid0);
+  gtk_widget_class_bind_template_child_private (widget_class, ChatEmbed, status_area_grid1);
   gtk_widget_class_bind_template_child_private (widget_class, ChatEmbed, status_area_nickname);
   gtk_widget_class_bind_template_child_private (widget_class, ChatEmbed, status_area_presence_icon);
   gtk_widget_class_bind_template_child_private (widget_class, ChatEmbed, status_area_presence_message);
