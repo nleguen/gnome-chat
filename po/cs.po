@@ -1,0 +1,82 @@
+# Czech translation for gnome-chat.
+# Copyright (C) 2013 gnome-chat's COPYRIGHT HOLDER
+# This file is distributed under the same license as the gnome-chat package.
+# Marek Černocký <marek@manet.cz>, 2013.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: gnome-chat master\n"
+"Report-Msgid-Bugs-To: http://bugzilla.gnome.org/enter_bug.cgi?product=gnome-"
+"chat&keywords=I18N+L10N&component=general\n"
+"POT-Creation-Date: 2013-09-10 23:46+0000\n"
+"PO-Revision-Date: 2013-09-11 11:52+0200\n"
+"Last-Translator: Marek Černocký <marek@manet.cz>\n"
+"Language-Team: Czech <gnome-cs-list@gnome.org>\n"
+"Language: cs\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=3; plural=(n==1) ? 0 : (n>=2 && n<=4) ? 1 : 2;\n"
+"X-Generator: Gtranslator 2.91.6\n"
+
+#: ../data/gnome-chat.desktop.in.in.h:1
+msgid "Chat"
+msgstr "Diskuze"
+
+#: ../data/gnome-chat.desktop.in.in.h:2
+msgid "Instant messaging client"
+msgstr "Komunikační klient"
+
+#: ../data/gnome-chat.desktop.in.in.h:3
+msgid "Chat;Talk;IM;Message;VOIP;GTalk;Facebook;Jabber;"
+msgstr ""
+"chat;diskuze;im;rychlá komunikace;zpráva;zprávy;voip;gtalk;facebook;jabber;"
+
+#: ../data/org.gnome.chat.gschema.xml.in.h:1
+msgid "Window size"
+msgstr "Velikost okna"
+
+#: ../data/org.gnome.chat.gschema.xml.in.h:2
+msgid "Window size (width and height)."
+msgstr "Velikost okna (šířka a výška)."
+
+#: ../data/org.gnome.chat.gschema.xml.in.h:3
+msgid "Window position"
+msgstr "Umístění okna"
+
+#: ../data/org.gnome.chat.gschema.xml.in.h:4
+msgid "Window position (x and y)."
+msgstr "Umístění okna (x a y)."
+
+#: ../data/org.gnome.chat.gschema.xml.in.h:5
+msgid "Window maximized"
+msgstr "Okno maximalizováno"
+
+#: ../data/org.gnome.chat.gschema.xml.in.h:6
+msgid "Window maximized state"
+msgstr "Stav maximalizace okna"
+
+#: ../src/chat-app-menu.ui.h:1
+msgid "About Chat"
+msgstr "O aplikaci Diskuze"
+
+#: ../src/chat-app-menu.ui.h:2
+msgid "Quit"
+msgstr "Ukončit"
+
+#: ../src/chat-contacts-list-dialog.ui.h:1
+msgid "Contacts"
+msgstr "Kontakty"
+
+#: ../src/chat-main-toolbar.ui.h:1
+msgid "Conversations"
+msgstr "Konverzace"
+
+#: ../src/chat-main-window.c:262
+msgid "Instant messaging client for GNOME"
+msgstr "Komunikační klient pro GNOME"
+
+#. Translators: Put your names here
+#: ../src/chat-main-window.c:272
+msgid "translator-credits"
+msgstr "Marek Černocký <marek@manet.cz>"
