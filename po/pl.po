@@ -1,0 +1,115 @@
+# -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-
+# Aviary.pl
+# Jeśli masz jakiekolwiek uwagi odnoszące się do tłumaczenia lub chcesz
+# pomóc w jego rozwijaniu i pielęgnowaniu, napisz do nas:
+# gnomepl@aviary.pl
+# -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-
+# Piotr Drąg <piotrdrag@gmail.com>, 2013.
+# Aviary.pl <gnomepl@aviary.pl>, 2013.
+msgid ""
+msgstr ""
+"Project-Id-Version: gnome-chat\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2013-09-12 00:40+0200\n"
+"PO-Revision-Date: 2013-09-12 00:41+0200\n"
+"Last-Translator: Piotr Drąg <piotrdrag@gmail.com>\n"
+"Language-Team: Polish <gnomepl@aviary.pl>\n"
+"Language: pl\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=3; plural=(n==1 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 "
+"|| n%100>=20) ? 1 : 2);\n"
+"X-Poedit-Language: Polish\n"
+"X-Poedit-Country: Poland\n"
+
+#: ../data/gnome-chat.desktop.in.in.h:1
+msgid "Chat"
+msgstr "Komunikator"
+
+#: ../data/gnome-chat.desktop.in.in.h:2
+msgid "Instant messaging client"
+msgstr "Klient komunikatora"
+
+#: ../data/gnome-chat.desktop.in.in.h:3
+msgid "Chat;Talk;IM;Message;VOIP;GTalk;Facebook;Jabber;"
+msgstr ""
+"Komunikator;Chat;Czat;Rozmowy;Talk;IM;Message;Wiadomość;VoIP;GTalk;Facebook;"
+"Jabber;"
+
+#: ../data/org.gnome.chat.gschema.xml.in.h:1
+msgid "Window size"
+msgstr "Rozmiar okna"
+
+#: ../data/org.gnome.chat.gschema.xml.in.h:2
+msgid "Window size (width and height)."
+msgstr "Rozmiar okna (szerokość i wysokość)."
+
+#: ../data/org.gnome.chat.gschema.xml.in.h:3
+msgid "Window position"
+msgstr "Położenie okna"
+
+#: ../data/org.gnome.chat.gschema.xml.in.h:4
+msgid "Window position (x and y)."
+msgstr "Położenie okna (na osi X i Y)."
+
+#: ../data/org.gnome.chat.gschema.xml.in.h:5
+msgid "Window maximized"
+msgstr "Zmaksymalizowane okno"
+
+#: ../data/org.gnome.chat.gschema.xml.in.h:6
+msgid "Window maximized state"
+msgstr "Stan maksymalizacji okna"
+
+#: ../src/chat-app-menu.ui.h:1
+msgid "About Chat"
+msgstr "O komunikatorze"
+
+#: ../src/chat-app-menu.ui.h:2
+msgid "Quit"
+msgstr "Zakończ"
+
+#: ../src/chat-contacts-list-dialog.ui.h:1
+msgid "Contacts"
+msgstr "Kontakty"
+
+#: ../src/chat-main-toolbar.ui.h:1
+msgid "Conversations"
+msgstr "Rozmowy"
+
+#: ../src/chat-main-window.c:262
+msgid "Instant messaging client for GNOME"
+msgstr "Klient komunikatora dla środowiska GNOME"
+
+#. Translators: Put your names here
+#: ../src/chat-main-window.c:272
+msgid "translator-credits"
+msgstr ""
+"Piotr Drąg <piotrdrag@gmail.com>, 2013\n"
+"Aviary.pl <gnomepl@aviary.pl>, 2013"
+
+#: ../src/empathy-utils.c:36
+msgid "Available"
+msgstr "Dostępny"
+
+#: ../src/empathy-utils.c:38
+msgid "Busy"
+msgstr "Zajęty"
+
+#: ../src/empathy-utils.c:41
+msgid "Away"
+msgstr "Nieobecny"
+
+#: ../src/empathy-utils.c:43
+msgid "Invisible"
+msgstr "Niewidoczny"
+
+#: ../src/empathy-utils.c:45
+msgid "Offline"
+msgstr "Offline"
+
+#. translators: presence type is unknown
+#: ../src/empathy-utils.c:48
+msgctxt "presence"
+msgid "Unknown"
+msgstr "Nieznany"
