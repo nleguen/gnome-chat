@@ -48,7 +48,7 @@
                     <property name="can_focus">False</property>
                     <property name="visible">True</property>
                     <child>
-                      <object class="GtkGrid" id="status_area_grid">
+                      <object class="GtkGrid" id="status_area_grid0">
                         <property name="can_focus">False</property>
                         <property name="hexpand">True</property>
                         <property name="orientation">horizontal</property>
@@ -62,7 +62,7 @@
                             <property name="vexpand">False</property>
                             <property name="visible">True</property>
                             <child>
-                              <object class="GtkLabel" id="status_area_label">
+                              <object class="GtkLabel" id="status_area_nickname">
                                 <property name="can_focus">False</property>
                                 <property name="ellipsize">end</property>
                                 <property name="halign">start</property>

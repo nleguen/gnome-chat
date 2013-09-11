@@ -45,7 +45,7 @@ struct _ChatEmbedPrivate
   GtkWidget *main_input_area;
   GtkWidget *sidebar_frame;
   GtkWidget *status_area;
-  GtkWidget *status_area_label;
+  GtkWidget *status_area_nickname;
   GtkWidget *status_area_presence_icon;
   GtkWidget *status_area_presence_message;
   GtkWidget *toolbar;
@@ -135,7 +135,7 @@ chat_embed_row_activated (ChatEmbed *self, GtkListBoxRow *row)
 
   nickname = tp_account_get_nickname (account);
   markup = g_markup_printf_escaped ("<b>%s</b>", nickname);
-  gtk_label_set_markup (GTK_LABEL (priv->status_area_label), markup);
+  gtk_label_set_markup (GTK_LABEL (priv->status_area_nickname), markup);
 
   presence = tp_account_get_current_presence (account, NULL, &status_message);
   if (status_message == NULL)
@@ -261,7 +261,7 @@ chat_embed_class_init (ChatEmbedClass *class)
   gtk_widget_class_bind_template_child_private (widget_class, ChatEmbed, main_input_area);
   gtk_widget_class_bind_template_child_private (widget_class, ChatEmbed, sidebar_frame);
   gtk_widget_class_bind_template_child_private (widget_class, ChatEmbed, status_area);
-  gtk_widget_class_bind_template_child_private (widget_class, ChatEmbed, status_area_label);
+  gtk_widget_class_bind_template_child_private (widget_class, ChatEmbed, status_area_nickname);
   gtk_widget_class_bind_template_child_private (widget_class, ChatEmbed, status_area_presence_icon);
   gtk_widget_class_bind_template_child_private (widget_class, ChatEmbed, status_area_presence_message);
 }
