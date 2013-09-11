@@ -43,6 +43,7 @@ struct _ChatEmbedPrivate
   GtkWidget *main_input_area;
   GtkWidget *sidebar_frame;
   GtkWidget *status_area;
+  GtkWidget *status_area_label;
   GtkWidget *toolbar;
   TplLogManager *lm;
 };
@@ -119,8 +120,15 @@ chat_embed_row_activated (ChatEmbed *self, GtkListBoxRow *row)
   TpContact *contact;
   TplEntity *entity;
   const gchar *identifier;
+  const gchar *nickname;
+  gchar *markup = NULL;
 
   contact = g_object_get_data (G_OBJECT (row), "chat-conversations-list-contact");
+  account = tp_contact_get_account (contact);
+
+  nickname = tp_account_get_nickname (account);
+  markup = g_markup_printf_escaped ("<b>%s</b>", nickname);
+  gtk_label_set_markup (GTK_LABEL (priv->status_area_label), markup);
 
   identifier = tp_contact_get_identifier (contact);
   priv->current_view = g_hash_table_lookup (priv->conversations, identifier);
@@ -138,7 +146,6 @@ chat_embed_row_activated (ChatEmbed *self, GtkListBoxRow *row)
   gtk_container_add (GTK_CONTAINER (sw), priv->current_view);
   g_hash_table_insert (priv->conversations, g_strdup (identifier), g_object_ref (priv->current_view));
 
-  account = tp_contact_get_account (contact);
   entity = tpl_entity_new_from_tp_contact (contact, TPL_ENTITY_CONTACT);
   if (tpl_log_manager_exists (priv->lm, account, entity, TPL_EVENT_MASK_TEXT))
     {
@@ -157,6 +164,7 @@ chat_embed_row_activated (ChatEmbed *self, GtkListBoxRow *row)
 
  out:
   gtk_stack_set_visible_child_name (GTK_STACK (priv->conversations_stack), identifier);
+  g_free (markup);
 }
 
 
@@ -238,6 +246,7 @@ chat_embed_class_init (ChatEmbedClass *class)
   gtk_widget_class_bind_template_child_private (widget_class, ChatEmbed, main_input_area);
   gtk_widget_class_bind_template_child_private (widget_class, ChatEmbed, sidebar_frame);
   gtk_widget_class_bind_template_child_private (widget_class, ChatEmbed, status_area);
+  gtk_widget_class_bind_template_child_private (widget_class, ChatEmbed, status_area_label);
 }
 
 
