@@ -130,6 +130,7 @@ chat_contacts_list_dialog_add_row (ChatContactsListDialog *self, TpContact *cont
   GtkWidget *box;
   GtkWidget *label;
   GtkWidget *image;
+  const gchar *alias;
   const gchar *state;
 
   presence = tp_contact_get_presence_type (contact);
@@ -139,7 +140,10 @@ chat_contacts_list_dialog_add_row (ChatContactsListDialog *self, TpContact *cont
       return;
     }
 
+  alias = tp_contact_get_alias (contact);
+
   row = gtk_list_box_row_new ();
+  g_object_set_data_full (G_OBJECT (row), "chat-contact", g_strdup (alias), (GDestroyNotify) g_free);
   box = gtk_box_new (GTK_ORIENTATION_HORIZONTAL, 6);
   gtk_widget_set_hexpand (box, TRUE);
   gtk_container_set_border_width (GTK_CONTAINER (box), 6);
@@ -149,7 +153,7 @@ chat_contacts_list_dialog_add_row (ChatContactsListDialog *self, TpContact *cont
   image = chat_contacts_list_dialog_get_avatar_image (contact);
   gtk_container_add (GTK_CONTAINER (box), image);
 
-  label = gtk_label_new (tp_contact_get_alias (contact));
+  label = gtk_label_new (alias);
   gtk_container_add (GTK_CONTAINER (box), label);
 
   state = chat_contacts_list_dialog_get_presence_image (presence);
@@ -290,6 +294,18 @@ chat_contacts_list_dialog_dispose (GObject *object)
 }
 
 
+static gint
+chat_contacts_list_dialog_sort_func (GtkListBoxRow *row1, GtkListBoxRow *row2, gpointer user_data)
+{
+  gchar *alias1, *alias2;
+
+  alias1 = g_object_get_data (G_OBJECT (row1), "chat-contact");
+  alias2 = g_object_get_data (G_OBJECT (row2), "chat-contact");
+
+  return g_utf8_collate (alias1, alias2);
+}
+
+
 static void
 chat_contacts_list_dialog_init (ChatContactsListDialog *self)
 {
@@ -300,6 +316,8 @@ chat_contacts_list_dialog_init (ChatContactsListDialog *self)
 
   gtk_widget_init_template (GTK_WIDGET (self));
 
+  gtk_list_box_set_sort_func (GTK_LIST_BOX (priv->list_box),
+                              (GtkListBoxSortFunc) chat_contacts_list_dialog_sort_func, NULL, NULL);
   gtk_list_box_set_header_func (GTK_LIST_BOX (priv->list_box), chat_contacts_list_dialog_update_header_func, NULL, NULL);
 
   priv->accounts = g_hash_table_new_full (g_direct_hash,
