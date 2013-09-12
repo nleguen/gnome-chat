@@ -1,4 +1,12 @@
-.chat-left-header-bar:dir(ltr) {
+.chat-sidebar:dir(ltr) {
+    border-width: 0 1px 0 0;
+}
+
+.chat-sidebar:dir(rtl) {
+    border-width: 0 0 0 1px;
+}
+
+chat-left-header-bar:dir(ltr) {
  border-right-width: 1px;
 }
 
