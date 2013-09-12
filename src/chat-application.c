@@ -88,6 +88,8 @@ chat_application_startup (GApplication *application)
   priv->resource = chat_get_resource ();
   g_resources_register (priv->resource);
 
+  priv->main_window = chat_main_window_new (GTK_APPLICATION (self));
+
   priv->mode_cntrlr = chat_mode_controller_dup_singleton ();
 
   action = g_simple_action_new ("about", NULL);
@@ -114,7 +116,6 @@ chat_application_startup (GApplication *application)
 
   gtk_application_add_accelerator (GTK_APPLICATION (self), "<Primary>q", "app.quit", NULL);
 
-  priv->main_window = chat_main_window_new (GTK_APPLICATION (self));
   chat_mode_controller_set_window_mode (priv->mode_cntrlr, CHAT_WINDOW_MODE_OVERVIEW);
 }
 
