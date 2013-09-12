@@ -255,6 +255,24 @@ chat_contacts_list_dialog_account_manager_prepare (GObject *source_object, GAsyn
 
 
 static void
+chat_contacts_list_dialog_update_header_func (GtkListBoxRow *row, GtkListBoxRow *before, gpointer user_data)
+{
+  GtkWidget *current;
+
+  if (before == NULL)
+    return;
+
+  current = gtk_list_box_row_get_header (row);
+  if (current == NULL)
+    {
+      current = gtk_separator_new (GTK_ORIENTATION_HORIZONTAL);
+      gtk_widget_show (current);
+      gtk_list_box_row_set_header (row, current);
+    }
+}
+
+
+static void
 chat_contacts_list_dialog_dispose (GObject *object)
 {
   ChatContactsListDialog *self = CHAT_CONTACTS_LIST_DIALOG (object);
@@ -281,6 +299,8 @@ chat_contacts_list_dialog_init (ChatContactsListDialog *self)
   priv = self->priv;
 
   gtk_widget_init_template (GTK_WIDGET (self));
+
+  gtk_list_box_set_header_func (GTK_LIST_BOX (priv->list_box), chat_contacts_list_dialog_update_header_func, NULL, NULL);
 
   priv->accounts = g_hash_table_new_full (g_direct_hash,
                                           chat_contacts_list_dialog_accounts_key_equal_func,
