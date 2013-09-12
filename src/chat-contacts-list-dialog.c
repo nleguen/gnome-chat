@@ -132,19 +132,19 @@ chat_contacts_list_dialog_add_row (ChatContactsListDialog *self, TpContact *cont
   GtkWidget *image;
   const gchar *state;
 
-  row = gtk_list_box_row_new ();
-  box = gtk_box_new (GTK_ORIENTATION_HORIZONTAL, 6);
-  gtk_widget_set_hexpand (box, TRUE);
-  gtk_container_set_border_width (GTK_CONTAINER (box), 6);
-  gtk_container_add (GTK_CONTAINER (row), box);
-  gtk_container_add (GTK_CONTAINER (priv->list_box), row);
-
   presence = tp_contact_get_presence_type (contact);
   if (presence == TP_CONNECTION_PRESENCE_TYPE_UNSET ||
       presence == TP_CONNECTION_PRESENCE_TYPE_ERROR)
     {
       return;
     }
+
+  row = gtk_list_box_row_new ();
+  box = gtk_box_new (GTK_ORIENTATION_HORIZONTAL, 6);
+  gtk_widget_set_hexpand (box, TRUE);
+  gtk_container_set_border_width (GTK_CONTAINER (box), 6);
+  gtk_container_add (GTK_CONTAINER (row), box);
+  gtk_container_add (GTK_CONTAINER (priv->list_box), row);
 
   image = chat_contacts_list_dialog_get_avatar_image (contact);
   gtk_container_add (GTK_CONTAINER (box), image);
