@@ -31,6 +31,7 @@
 struct _ChatContactsListDialogPrivate
 {
   GtkWidget *list_box;
+  GtkWidget *cancel_button;
   GHashTable *accounts;
   TpAccountManager *am;
 };
@@ -320,6 +321,8 @@ chat_contacts_list_dialog_init (ChatContactsListDialog *self)
                               (GtkListBoxSortFunc) chat_contacts_list_dialog_sort_func, NULL, NULL);
   gtk_list_box_set_header_func (GTK_LIST_BOX (priv->list_box), chat_contacts_list_dialog_update_header_func, NULL, NULL);
 
+  g_signal_connect_swapped (priv->cancel_button, "clicked", G_CALLBACK (gtk_widget_destroy), self);
+
   priv->accounts = g_hash_table_new_full (g_direct_hash,
                                           chat_contacts_list_dialog_accounts_key_equal_func,
                                           g_object_unref,
@@ -340,6 +343,7 @@ chat_contacts_list_dialog_class_init (ChatContactsListDialogClass *class)
 
   gtk_widget_class_set_template_from_resource (widget_class, "/org/gnome/chat/contacts-list-dialog.ui");
   gtk_widget_class_bind_template_child_private (widget_class, ChatContactsListDialog, list_box);
+  gtk_widget_class_bind_template_child_private (widget_class, ChatContactsListDialog, cancel_button);
 }
 
 

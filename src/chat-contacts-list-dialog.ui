@@ -3,12 +3,49 @@
   <!-- interface-requires gtk+ 3.10 -->
   <template class="ChatContactsListDialog" parent="GtkDialog">
     <property name="can_focus">False</property>
-    <property name="title" translatable="yes">Contacts</property>
+    <property name="title" translatable="yes">New Conversation</property>
     <property name="modal">True</property>
     <property name="default_width">400</property>
     <property name="default_height">600</property>
     <property name="destroy_with_parent">True</property>
     <property name="type_hint">dialog</property>
+    <child type="titlebar">
+      <object class="GtkHeaderBar" id="header_bar">
+        <property name="visible">True</property>
+        <property name="can_focus">False</property>
+        <property name="vexpand">False</property>
+        <property name="title" translatable="yes">New Conversation</property>
+        <child>
+          <object class="GtkButton" id="cancel_button">
+            <property name="visible">True</property>
+            <property name="valign">center</property>
+            <property name="can_focus">False</property>
+            <property name="label" translatable="yes">Cancel</property>
+            <style>
+              <class name="text-button"/>
+            </style>
+          </object>
+          <packing>
+            <property name="pack_type">start</property>
+          </packing>
+        </child>
+        <child>
+          <object class="GtkButton" id="done_button">
+            <property name="visible">True</property>
+            <property name="valign">center</property>
+            <property name="can_focus">False</property>
+            <property name="label" translatable="yes">Done</property>
+            <style>
+              <class name="text-button"/>
+              <class name="suggested-action"/>
+            </style>
+          </object>
+          <packing>
+            <property name="pack_type">end</property>
+          </packing>
+        </child>
+      </object>
+    </child>
     <child internal-child="vbox">
       <object class="GtkBox" id="box">
         <property name="can_focus">False</property>
@@ -17,7 +54,6 @@
           <object class="GtkScrolledWindow" id="scrolledwindow1">
             <property name="visible">True</property>
             <property name="can_focus">True</property>
-            <property name="shadow_type">in</property>
             <child>
               <object class="GtkListBox" id="list_box">
               </object>
@@ -26,7 +62,6 @@
           <packing>
             <property name="expand">True</property>
             <property name="fill">True</property>
-            <property name="position">1</property>
           </packing>
         </child>
       </object>
