@@ -122,16 +122,18 @@ chat_contacts_list_dialog_add_row_avatar (GObject *source_object, GAsyncResult *
   row = gtk_list_box_row_new ();
   g_object_set_data_full (G_OBJECT (row), "chat-contact", g_strdup (alias), (GDestroyNotify) g_free);
   grid = gtk_grid_new ();
-  gtk_widget_set_hexpand (grid, TRUE);
   gtk_container_set_border_width (GTK_CONTAINER (grid), 6);
   gtk_orientable_set_orientation (GTK_ORIENTABLE (grid), GTK_ORIENTATION_HORIZONTAL);
   gtk_grid_set_column_spacing (GTK_GRID (grid), 6);
   gtk_container_add (GTK_CONTAINER (row), grid);
   gtk_container_add (GTK_CONTAINER (priv->list_box), row);
 
+  gtk_widget_set_hexpand (image, FALSE);
   gtk_container_add (GTK_CONTAINER (grid), image);
 
   label = gtk_label_new (alias);
+  gtk_widget_set_halign (label, GTK_ALIGN_START);
+  gtk_widget_set_hexpand (label, TRUE);
   gtk_label_set_ellipsize (GTK_LABEL (label), PANGO_ELLIPSIZE_END);
   gtk_container_add (GTK_CONTAINER (grid), label);
 
@@ -139,6 +141,7 @@ chat_contacts_list_dialog_add_row_avatar (GObject *source_object, GAsyncResult *
   if (state)
     {
       image = gtk_image_new_from_icon_name (state, GTK_ICON_SIZE_BUTTON);
+      gtk_widget_set_hexpand (image, FALSE);
       gtk_container_add (GTK_CONTAINER (grid), image);
     }
 
