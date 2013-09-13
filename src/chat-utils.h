@@ -19,18 +19,24 @@
  */
 
 
-#ifndef CHAT_CONSTANTS_H
-#define CHAT_CONSTANTS_H
+#ifndef CHAT_UTILS_H
+#define CHAT_UTILS_H
+
+#include <gio/gio.h>
+#include <gtk/gtk.h>
+#include <telepathy-glib/telepathy-glib.h>
 
 G_BEGIN_DECLS
 
-enum
-{
-  CHAT_AVATAR_SIZE = 32, /* pixels */
-  CHAT_SELF_AVATAR_SIZE = 32 /* pixels */
-};
+void            chat_utils_get_contact_avatar            (TpContact *contact,
+                                                          GCancellable *cancellable,
+                                                          GAsyncReadyCallback callback,
+                                                          gpointer user_data);
+
+GtkImage       *chat_utils_get_contact_avatar_finish     (TpContact *contact, GAsyncResult *res, GError **error);
+
+GtkImage       *chat_utils_get_contact_avatar_default    (void);
 
 G_END_DECLS
 
-#endif /* CHAT_CONSTANTS_H */
-
+#endif /* CHAT_UTILS_H */

@@ -44,6 +44,8 @@ gnome_chat_SOURCES = \
 	chat-mode-controller.h \
 	chat-settings.c \
 	chat-settings.h \
+	chat-utils.c \
+	chat-utils.h \
 	chat-main.c \
 	$(NULL)
 
