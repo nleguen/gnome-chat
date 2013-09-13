@@ -46,6 +46,7 @@ struct _ChatEmbedPrivate
   GtkWidget *current_view;
   GtkWidget *conversations_stack;
   GtkWidget *main_input_area;
+  GtkWidget *message_entry;
   GtkWidget *sidebar_frame;
   GtkWidget *status_area;
   GtkWidget *status_area_grid0;
@@ -54,6 +55,7 @@ struct _ChatEmbedPrivate
   GtkWidget *status_area_presence_icon;
   GtkWidget *status_area_presence_message;
   GtkWidget *toolbar;
+  TpContact *current_contact;
   TplLogManager *lm;
 };
 
@@ -64,6 +66,35 @@ G_DEFINE_TYPE_WITH_CODE (ChatEmbed, chat_embed, GTK_TYPE_BOX,
                          G_ADD_PRIVATE (ChatEmbed)
                          G_IMPLEMENT_INTERFACE (GTK_TYPE_BUILDABLE,
                                                 chat_embed_buildable_init));
+
+
+static void
+chat_embed_ensure_and_handle_channel (GObject *source_object, GAsyncResult *res, gpointer user_data)
+{
+  ChatEmbed *self = CHAT_EMBED (user_data);
+  ChatEmbedPrivate *priv = self->priv;
+  TpAccountChannelRequest *request = TP_ACCOUNT_CHANNEL_REQUEST (source_object);
+  GError *error;
+  TpChannel *channel;
+  TpMessage *message;
+  const gchar *text;
+
+  gtk_widget_set_sensitive (priv->conversations_list, TRUE);
+  gtk_widget_set_sensitive (priv->message_entry, TRUE);
+
+  error = NULL;
+  channel = tp_account_channel_request_ensure_and_handle_channel_finish (request, res, NULL, &error);
+  if (error != NULL)
+    {
+      g_warning ("Unable to EnsureChannel: %s", error->message);
+      g_error_free (error);
+      return;
+    }
+
+  text = gtk_entry_get_text (GTK_ENTRY (priv->message_entry));
+  message = tp_client_message_new_text (TP_CHANNEL_TEXT_MESSAGE_TYPE_NORMAL, text);
+  tp_text_channel_send_message_async (TP_TEXT_CHANNEL (channel), message, 0, NULL, NULL);
+}
 
 
 static void
@@ -121,13 +152,32 @@ chat_embed_get_filtered_events (GObject *source_object, GAsyncResult *res, gpoin
 
 
 static void
+chat_embed_message_entry_activate (ChatEmbed *self)
+{
+  ChatEmbedPrivate *priv = self->priv;
+  TpAccount *account;
+  TpAccountChannelRequest *request;
+
+  account = tp_contact_get_account (priv->current_contact);
+  request = tp_account_channel_request_new_text (account, TP_USER_ACTION_TIME_CURRENT_TIME);
+  tp_account_channel_request_set_target_contact (request, priv->current_contact);
+
+  tp_account_channel_request_ensure_and_handle_channel_async (request,
+                                                              NULL,
+                                                              chat_embed_ensure_and_handle_channel,
+                                                              g_object_ref (self));
+  gtk_widget_set_sensitive (priv->conversations_list, FALSE);
+  gtk_widget_set_sensitive (priv->message_entry, FALSE);
+}
+
+
+static void
 chat_embed_row_activated (ChatEmbed *self, GtkListBoxRow *row)
 {
   ChatEmbedPrivate *priv = self->priv;
   GtkWidget *sw;
   TpAccount *account;
   TpConnectionPresenceType presence;
-  TpContact *contact;
   TplEntity *entity;
   const gchar *icon_name;
   const gchar *identifier;
@@ -135,8 +185,10 @@ chat_embed_row_activated (ChatEmbed *self, GtkListBoxRow *row)
   gchar *markup = NULL;
   gchar *status_message = NULL;
 
-  contact = g_object_get_data (G_OBJECT (row), "chat-conversations-list-contact");
-  account = tp_contact_get_account (contact);
+  g_clear_object (&priv->current_contact);
+  priv->current_contact = g_object_ref (g_object_get_data (G_OBJECT (row), "chat-conversations-list-contact"));
+
+  account = tp_contact_get_account (priv->current_contact);
 
   if (priv->avatar_chooser != NULL)
     gtk_widget_destroy (priv->avatar_chooser);
@@ -161,7 +213,7 @@ chat_embed_row_activated (ChatEmbed *self, GtkListBoxRow *row)
   gtk_image_set_from_icon_name (GTK_IMAGE (priv->status_area_presence_icon), icon_name, GTK_ICON_SIZE_MENU);
   gtk_label_set_label (GTK_LABEL (priv->status_area_presence_message), status_message);
 
-  identifier = tp_contact_get_identifier (contact);
+  identifier = tp_contact_get_identifier (priv->current_contact);
   priv->current_view = g_hash_table_lookup (priv->conversations, identifier);
   if (priv->current_view != NULL)
     goto out;
@@ -177,7 +229,7 @@ chat_embed_row_activated (ChatEmbed *self, GtkListBoxRow *row)
   gtk_container_add (GTK_CONTAINER (sw), priv->current_view);
   g_hash_table_insert (priv->conversations, g_strdup (identifier), g_object_ref (priv->current_view));
 
-  entity = tpl_entity_new_from_tp_contact (contact, TPL_ENTITY_CONTACT);
+  entity = tpl_entity_new_from_tp_contact (priv->current_contact, TPL_ENTITY_CONTACT);
   if (tpl_log_manager_exists (priv->lm, account, entity, TPL_EVENT_MASK_TEXT))
     {
       tpl_log_manager_get_filtered_events_async (priv->lm,
@@ -250,6 +302,7 @@ chat_embed_dispose (GObject *object)
 
   g_clear_object (&priv->size_group_bottom);
   g_clear_object (&priv->size_group_left);
+  g_clear_object (&priv->current_contact);
   g_clear_object (&priv->lm);
 
   G_OBJECT_CLASS (chat_embed_parent_class)->dispose (object);
@@ -289,6 +342,8 @@ chat_embed_init (ChatEmbed *self)
 
   g_signal_connect_swapped (priv->conversations_list, "add", G_CALLBACK (chat_embed_conversation_add), self);
   g_signal_connect_swapped (priv->conversations_list, "row-activated", G_CALLBACK (chat_embed_row_activated), self);
+
+  g_signal_connect_swapped (priv->message_entry, "activate", G_CALLBACK (chat_embed_message_entry_activate), self);
 }
 
 
@@ -306,6 +361,7 @@ chat_embed_class_init (ChatEmbedClass *class)
   gtk_widget_class_bind_template_child_private (widget_class, ChatEmbed, conversations_list);
   gtk_widget_class_bind_template_child_private (widget_class, ChatEmbed, conversations_stack);
   gtk_widget_class_bind_template_child_private (widget_class, ChatEmbed, main_input_area);
+  gtk_widget_class_bind_template_child_private (widget_class, ChatEmbed, message_entry);
   gtk_widget_class_bind_template_child_private (widget_class, ChatEmbed, sidebar_frame);
   gtk_widget_class_bind_template_child_private (widget_class, ChatEmbed, status_area);
   gtk_widget_class_bind_template_child_private (widget_class, ChatEmbed, status_area_grid0);
