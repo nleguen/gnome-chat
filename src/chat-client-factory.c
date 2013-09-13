@@ -46,6 +46,31 @@ chat_client_factory_dup_account_features (TpSimpleClientFactory *factory, TpAcco
 
 
 static GArray *
+chat_client_factory_dup_channel_features (TpSimpleClientFactory *factory, TpChannel *channel)
+{
+  GArray *features;
+  GQuark feature;
+
+  features = TP_SIMPLE_CLIENT_FACTORY_CLASS (chat_client_factory_parent_class)
+    ->dup_channel_features (factory, channel);
+
+  feature = TP_CHANNEL_FEATURE_CONTACTS;
+  g_array_append_val (features, feature);
+
+  if (TP_IS_TEXT_CHANNEL (channel))
+    {
+      feature = TP_TEXT_CHANNEL_FEATURE_CHAT_STATES;
+      g_array_append_val (features, feature);
+
+      feature = TP_TEXT_CHANNEL_FEATURE_INCOMING_MESSAGES;
+      g_array_append_val (features, feature);
+    }
+
+  return features;
+}
+
+
+static GArray *
 chat_client_factory_dup_connection_features (TpSimpleClientFactory *factory, TpConnection *connection)
 {
   GArray *features;
@@ -118,6 +143,7 @@ chat_client_factory_class_init (ChatClientFactoryClass *class)
 
   object_class->constructor = chat_client_factory_constructor;
   simple_class->dup_account_features = chat_client_factory_dup_account_features;
+  simple_class->dup_channel_features = chat_client_factory_dup_channel_features;
   simple_class->dup_connection_features = chat_client_factory_dup_connection_features;
   simple_class->dup_contact_features = chat_client_factory_dup_contact_features;
 }
