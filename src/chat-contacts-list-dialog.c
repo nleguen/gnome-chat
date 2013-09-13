@@ -132,6 +132,7 @@ chat_contacts_list_dialog_add_row_avatar (GObject *source_object, GAsyncResult *
   gtk_container_add (GTK_CONTAINER (grid), image);
 
   label = gtk_label_new (alias);
+  gtk_label_set_ellipsize (GTK_LABEL (label), PANGO_ELLIPSIZE_END);
   gtk_container_add (GTK_CONTAINER (grid), label);
 
   state = chat_contacts_list_dialog_get_presence_image (presence);
