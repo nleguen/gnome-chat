@@ -10,8 +10,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: gnome-chat\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2013-09-12 00:40+0200\n"
-"PO-Revision-Date: 2013-09-12 00:41+0200\n"
+"POT-Creation-Date: 2013-09-13 20:12+0200\n"
+"PO-Revision-Date: 2013-09-13 20:13+0200\n"
 "Last-Translator: Piotr Drąg <piotrdrag@gmail.com>\n"
 "Language-Team: Polish <gnomepl@aviary.pl>\n"
 "Language: pl\n"
@@ -70,8 +70,20 @@ msgid "Quit"
 msgstr "Zakończ"
 
 #: ../src/chat-contacts-list-dialog.ui.h:1
-msgid "Contacts"
-msgstr "Kontakty"
+msgid "New Conversation"
+msgstr "Nowa rozmowa"
+
+#: ../src/chat-contacts-list-dialog.ui.h:2
+msgid "Cancel"
+msgstr "Anuluj"
+
+#: ../src/chat-contacts-list-dialog.ui.h:3
+msgid "Done"
+msgstr "Gotowe"
+
+#: ../src/chat-contacts-list-dialog.ui.h:4
+msgid "Type to search a contact…"
+msgstr "Wyszukiwanie kontaktów…"
 
 #: ../src/chat-main-toolbar.ui.h:1
 msgid "Conversations"
