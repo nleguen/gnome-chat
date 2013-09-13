@@ -41,6 +41,7 @@ struct _ChatContactsListDialogPrivate
 
 G_DEFINE_TYPE_WITH_PRIVATE (ChatContactsListDialog, chat_contacts_list_dialog, GTK_TYPE_DIALOG);
 
+
 static gboolean
 chat_contacts_list_dialog_accounts_key_equal_func (gconstpointer a, gconstpointer b)
 {
@@ -102,11 +103,8 @@ chat_contacts_list_dialog_add_row_avatar (GObject *source_object, GAsyncResult *
   const gchar *state;
 
   presence = tp_contact_get_presence_type (contact);
-  if (presence == TP_CONNECTION_PRESENCE_TYPE_UNSET ||
-      presence == TP_CONNECTION_PRESENCE_TYPE_ERROR)
-    {
-      return;
-    }
+  if (presence == TP_CONNECTION_PRESENCE_TYPE_UNSET || presence == TP_CONNECTION_PRESENCE_TYPE_ERROR)
+    return;
 
   alias = tp_contact_get_alias (contact);
 
@@ -121,12 +119,13 @@ chat_contacts_list_dialog_add_row_avatar (GObject *source_object, GAsyncResult *
 
   row = gtk_list_box_row_new ();
   g_object_set_data_full (G_OBJECT (row), "chat-contact", g_strdup (alias), (GDestroyNotify) g_free);
+  gtk_container_add (GTK_CONTAINER (priv->list_box), row);
+
   grid = gtk_grid_new ();
   gtk_container_set_border_width (GTK_CONTAINER (grid), 6);
   gtk_orientable_set_orientation (GTK_ORIENTABLE (grid), GTK_ORIENTATION_HORIZONTAL);
   gtk_grid_set_column_spacing (GTK_GRID (grid), 6);
   gtk_container_add (GTK_CONTAINER (row), grid);
-  gtk_container_add (GTK_CONTAINER (priv->list_box), row);
 
   gtk_widget_set_hexpand (image, FALSE);
   gtk_container_add (GTK_CONTAINER (grid), image);
@@ -287,7 +286,8 @@ chat_contacts_list_dialog_dispose (GObject *object)
 static gint
 chat_contacts_list_dialog_sort_func (GtkListBoxRow *row1, GtkListBoxRow *row2, gpointer user_data)
 {
-  gchar *alias1, *alias2;
+  gchar *alias1;
+  gchar *alias2;
 
   alias1 = g_object_get_data (G_OBJECT (row1), "chat-contact");
   alias2 = g_object_get_data (G_OBJECT (row2), "chat-contact");
@@ -307,8 +307,13 @@ chat_contacts_list_dialog_init (ChatContactsListDialog *self)
   gtk_widget_init_template (GTK_WIDGET (self));
 
   gtk_list_box_set_sort_func (GTK_LIST_BOX (priv->list_box),
-                              (GtkListBoxSortFunc) chat_contacts_list_dialog_sort_func, NULL, NULL);
-  gtk_list_box_set_header_func (GTK_LIST_BOX (priv->list_box), chat_contacts_list_dialog_update_header_func, NULL, NULL);
+                              (GtkListBoxSortFunc) chat_contacts_list_dialog_sort_func,
+                              NULL,
+                              NULL);
+  gtk_list_box_set_header_func (GTK_LIST_BOX (priv->list_box),
+                                chat_contacts_list_dialog_update_header_func,
+                                NULL,
+                                NULL);
 
   g_signal_connect_swapped (priv->cancel_button, "clicked", G_CALLBACK (gtk_widget_destroy), self);
 

@@ -120,13 +120,13 @@ chat_conversations_list_add_row_avatar (GObject *source_object, GAsyncResult *re
     }
 
   row = gtk_list_box_row_new ();
+  g_object_set_data_full (G_OBJECT (row), "chat-conversations-list-contact", g_object_ref (contact), g_object_unref);
+  gtk_container_add (GTK_CONTAINER (self), row);
+
   grid = gtk_grid_new ();
   gtk_orientable_set_orientation (GTK_ORIENTABLE (grid), GTK_ORIENTATION_HORIZONTAL);
   gtk_grid_set_column_spacing (GTK_GRID (grid), 6);
   gtk_container_add (GTK_CONTAINER (row), grid);
-  gtk_container_add (GTK_CONTAINER (self), row);
-
-  g_object_set_data_full (G_OBJECT (row), "chat-conversations-list-contact", g_object_ref (contact), g_object_unref);
 
   gtk_widget_set_hexpand (image, FALSE);
   gtk_container_add (GTK_CONTAINER (grid), image);
