@@ -8,8 +8,8 @@ msgstr ""
 "Project-Id-Version: gnome-chat master\n"
 "Report-Msgid-Bugs-To: http://bugzilla.gnome.org/enter_bug.cgi?product=gnome-"
 "chat&keywords=I18N+L10N&component=general\n"
-"POT-Creation-Date: 2013-09-11 14:01+0000\n"
-"PO-Revision-Date: 2013-09-11 17:46+0200\n"
+"POT-Creation-Date: 2013-09-12 21:30+0000\n"
+"PO-Revision-Date: 2013-09-13 12:43+0200\n"
 "Last-Translator: Daniel Mustieles <daniel.mustieles@gmail.com>\n"
 "Language-Team: Español <gnome-es-list@gnome.org>\n"
 "Language: es\n"
@@ -63,8 +63,21 @@ msgid "Quit"
 msgstr "Salir"
 
 #: ../src/chat-contacts-list-dialog.ui.h:1
-msgid "Contacts"
-msgstr "Contactos"
+#| msgid "Conversations"
+msgid "New Conversation"
+msgstr "Nueva conversación"
+
+#: ../src/chat-contacts-list-dialog.ui.h:2
+msgid "Cancel"
+msgstr "Cancelar"
+
+#: ../src/chat-contacts-list-dialog.ui.h:3
+msgid "Done"
+msgstr "Hecho"
+
+#: ../src/chat-contacts-list-dialog.ui.h:4
+msgid "Type to search a contact…"
+msgstr "Escribir para buscar un contacto…"
 
 #: ../src/chat-main-toolbar.ui.h:1
 msgid "Conversations"
@@ -104,3 +117,6 @@ msgstr "Desconectado"
 msgctxt "presence"
 msgid "Unknown"
 msgstr "Desconocido"
+
+#~ msgid "Contacts"
+#~ msgstr "Contactos"
