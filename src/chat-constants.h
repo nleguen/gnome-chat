@@ -24,6 +24,8 @@
 
 G_BEGIN_DECLS
 
+#define CHAT_PROTOCOL_IRC "irc"
+
 enum
 {
   CHAT_AVATAR_SIZE = 32, /* pixels */

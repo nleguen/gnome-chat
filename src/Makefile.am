@@ -40,6 +40,8 @@ gnome_chat_SOURCES = \
 	chat-main-toolbar.h \
 	chat-main-window.c \
 	chat-main-window.h \
+	chat-manager.c \
+	chat-manager.h \
 	chat-mode-controller.c \
 	chat-mode-controller.h \
 	chat-settings.c \
