@@ -1,6 +1,7 @@
 # Czech translation for gnome-chat.
 # Copyright (C) 2013 gnome-chat's COPYRIGHT HOLDER
 # This file is distributed under the same license as the gnome-chat package.
+#
 # Marek Černocký <marek@manet.cz>, 2013.
 #
 msgid ""
@@ -8,8 +9,8 @@ msgstr ""
 "Project-Id-Version: gnome-chat master\n"
 "Report-Msgid-Bugs-To: http://bugzilla.gnome.org/enter_bug.cgi?product=gnome-"
 "chat&keywords=I18N+L10N&component=general\n"
-"POT-Creation-Date: 2013-09-10 23:46+0000\n"
-"PO-Revision-Date: 2013-09-11 11:52+0200\n"
+"POT-Creation-Date: 2013-09-12 21:30+0000\n"
+"PO-Revision-Date: 2013-09-13 08:44+0200\n"
 "Last-Translator: Marek Černocký <marek@manet.cz>\n"
 "Language-Team: Czech <gnome-cs-list@gnome.org>\n"
 "Language: cs\n"
@@ -65,8 +66,20 @@ msgid "Quit"
 msgstr "Ukončit"
 
 #: ../src/chat-contacts-list-dialog.ui.h:1
-msgid "Contacts"
-msgstr "Kontakty"
+msgid "New Conversation"
+msgstr "Nová konverzace"
+
+#: ../src/chat-contacts-list-dialog.ui.h:2
+msgid "Cancel"
+msgstr "Zrušit"
+
+#: ../src/chat-contacts-list-dialog.ui.h:3
+msgid "Done"
+msgstr "Hotovo"
+
+#: ../src/chat-contacts-list-dialog.ui.h:4
+msgid "Type to search a contact…"
+msgstr "psaním vyhledáte kontakt…"
 
 #: ../src/chat-main-toolbar.ui.h:1
 msgid "Conversations"
@@ -80,3 +93,29 @@ msgstr "Komunikační klient pro GNOME"
 #: ../src/chat-main-window.c:272
 msgid "translator-credits"
 msgstr "Marek Černocký <marek@manet.cz>"
+
+#: ../src/empathy-utils.c:36
+msgid "Available"
+msgstr "Přítomen"
+
+#: ../src/empathy-utils.c:38
+msgid "Busy"
+msgstr "Zaneprázdněn"
+
+#: ../src/empathy-utils.c:41
+msgid "Away"
+msgstr "Nepřítomen"
+
+#: ../src/empathy-utils.c:43
+msgid "Invisible"
+msgstr "Skrytý"
+
+#: ../src/empathy-utils.c:45
+msgid "Offline"
+msgstr "Odpojen"
+
+#. translators: presence type is unknown
+#: ../src/empathy-utils.c:48
+msgctxt "presence"
+msgid "Unknown"
+msgstr "Neznámo"
