@@ -26,6 +26,7 @@
 #include <telepathy-logger/telepathy-logger.h>
 
 #include "chat-conversations-list.h"
+#include "chat-utils.h"
 
 
 struct _ChatConversationsListPrivate
@@ -92,32 +93,69 @@ chat_conversations_list_accounts_value_destroy_func (gpointer data)
 
 
 static void
-chat_conversations_list_add_row (ChatConversationsList *self, TpContact *contact, TplEvent *event)
+chat_conversations_list_add_row_avatar (GObject *source_object, GAsyncResult *res, gpointer user_data)
 {
+  ChatConversationsList *self = CHAT_CONVERSATIONS_LIST (user_data);
+  TpContact *contact = TP_CONTACT (source_object);
+  GError *error;
   GtkWidget *grid;
+  GtkWidget *image;
   GtkWidget *label;
   GtkWidget *row;
+  TplEvent *event;
   const gchar *alias;
   const gchar *message;
   gchar *markup;
 
+  event = TPL_EVENT (g_object_get_data (G_OBJECT (contact), "chat-conversations-list-last-event"));
+  alias = tp_contact_get_alias (contact);
+
+  error = NULL;
+  image = GTK_WIDGET (chat_utils_get_contact_avatar_finish (contact, res, &error));
+  if (error != NULL)
+    {
+      image = GTK_WIDGET (chat_utils_get_contact_avatar_default ());
+      g_warning ("Unable to get avatar for %s: %s", alias, error->message);
+      g_error_free (error);
+    }
+
   row = gtk_list_box_row_new ();
   grid = gtk_grid_new ();
+  gtk_orientable_set_orientation (GTK_ORIENTABLE (grid), GTK_ORIENTATION_HORIZONTAL);
+  gtk_grid_set_column_spacing (GTK_GRID (grid), 6);
   gtk_container_add (GTK_CONTAINER (row), grid);
   gtk_container_add (GTK_CONTAINER (self), row);
 
   g_object_set_data_full (G_OBJECT (row), "chat-conversations-list-contact", g_object_ref (contact), g_object_unref);
 
-  alias = tp_contact_get_alias (contact);
+  gtk_widget_set_hexpand (image, FALSE);
+  gtk_container_add (GTK_CONTAINER (grid), image);
+
   message = tpl_text_event_get_message (TPL_TEXT_EVENT (event));
   markup = g_markup_printf_escaped ("<b>%s</b>\n%s", alias, message);
   label = gtk_label_new (NULL);
+  gtk_widget_set_halign (label, GTK_ALIGN_START);
+  gtk_widget_set_hexpand (label, TRUE);
   gtk_label_set_ellipsize (GTK_LABEL (label), PANGO_ELLIPSIZE_END);
   gtk_label_set_markup (GTK_LABEL (label), markup);
   gtk_container_add (GTK_CONTAINER (grid), label);
   g_free (markup);
 
   gtk_widget_show_all (row);
+
+  g_object_set_data (G_OBJECT (contact), "chat-conversations-list-last-event", NULL);
+  g_object_unref (self);
+}
+
+
+static void
+chat_conversations_list_add_row (ChatConversationsList *self, TpContact *contact, TplEvent *event)
+{
+  g_object_set_data_full (G_OBJECT (contact),
+                          "chat-conversations-list-last-event",
+                          g_object_ref (event),
+                          g_object_unref);
+  chat_utils_get_contact_avatar (contact, NULL, chat_conversations_list_add_row_avatar, g_object_ref (self));
 }
 
 
