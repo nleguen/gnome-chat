@@ -27,6 +27,7 @@ gnome_chat_SOURCES = \
 	chat-application.h \
 	chat-client-factory.c \
 	chat-client-factory.h \
+	chat-constants.h \
 	chat-contacts-list-dialog.c \
 	chat-contacts-list-dialog.h \
 	chat-conversation-view.c \

@@ -26,6 +26,7 @@
 #include <tp-account-widgets/tpaw-avatar-chooser.h>
 
 #include "chat-application.h"
+#include "chat-constants.h"
 #include "chat-conversation-view.h"
 #include "chat-conversations-list.h"
 #include "chat-embed.h"
@@ -139,7 +140,7 @@ chat_embed_row_activated (ChatEmbed *self, GtkListBoxRow *row)
 
   if (priv->avatar_chooser != NULL)
     gtk_widget_destroy (priv->avatar_chooser);
-  priv->avatar_chooser = tpaw_avatar_chooser_new (account);
+  priv->avatar_chooser = tpaw_avatar_chooser_new (account, CHAT_SELF_AVATAR_SIZE);
   gtk_button_set_relief (GTK_BUTTON (priv->avatar_chooser), GTK_RELIEF_NONE);
   gtk_grid_attach_next_to (GTK_GRID (priv->status_area_grid0),
                            priv->avatar_chooser,
