@@ -81,7 +81,7 @@ chat_contacts_list_dialog_get_avatar_image (TpContact *contact)
         }
       else
         {
-          pixbuf = gdk_pixbuf_new_from_stream (G_INPUT_STREAM (stream), NULL, &error);
+          pixbuf = gdk_pixbuf_new_from_stream_at_scale (G_INPUT_STREAM (stream), 32, 32, TRUE, NULL, &error);
           if (!pixbuf)
             {
               g_warning ("Failed to create avatar: %s", error->message);
@@ -95,7 +95,7 @@ chat_contacts_list_dialog_get_avatar_image (TpContact *contact)
     }
 
   return gtk_image_new_from_icon_name ("avatar-default-symbolic",
-                                       GTK_ICON_SIZE_LARGE_TOOLBAR);
+                                       GTK_ICON_SIZE_DND);
 }
 
 
