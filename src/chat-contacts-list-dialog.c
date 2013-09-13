@@ -128,7 +128,7 @@ chat_contacts_list_dialog_add_row (ChatContactsListDialog *self, TpContact *cont
   ChatContactsListDialogPrivate *priv = self->priv;
   TpConnectionPresenceType presence;
   GtkWidget *row;
-  GtkWidget *box;
+  GtkWidget *grid;
   GtkWidget *label;
   GtkWidget *image;
   const gchar *alias;
@@ -145,23 +145,25 @@ chat_contacts_list_dialog_add_row (ChatContactsListDialog *self, TpContact *cont
 
   row = gtk_list_box_row_new ();
   g_object_set_data_full (G_OBJECT (row), "chat-contact", g_strdup (alias), (GDestroyNotify) g_free);
-  box = gtk_box_new (GTK_ORIENTATION_HORIZONTAL, 6);
-  gtk_widget_set_hexpand (box, TRUE);
-  gtk_container_set_border_width (GTK_CONTAINER (box), 6);
-  gtk_container_add (GTK_CONTAINER (row), box);
+  grid = gtk_grid_new ();
+  gtk_widget_set_hexpand (grid, TRUE);
+  gtk_container_set_border_width (GTK_CONTAINER (grid), 6);
+  gtk_orientable_set_orientation (GTK_ORIENTABLE (grid), GTK_ORIENTATION_HORIZONTAL);
+  gtk_grid_set_column_spacing (GTK_GRID (grid), 6);
+  gtk_container_add (GTK_CONTAINER (row), grid);
   gtk_container_add (GTK_CONTAINER (priv->list_box), row);
 
   image = chat_contacts_list_dialog_get_avatar_image (contact);
-  gtk_container_add (GTK_CONTAINER (box), image);
+  gtk_container_add (GTK_CONTAINER (grid), image);
 
   label = gtk_label_new (alias);
-  gtk_container_add (GTK_CONTAINER (box), label);
+  gtk_container_add (GTK_CONTAINER (grid), label);
 
   state = chat_contacts_list_dialog_get_presence_image (presence);
   if (state)
     {
       image = gtk_image_new_from_icon_name (state, GTK_ICON_SIZE_BUTTON);
-      gtk_box_pack_end (GTK_BOX (box), image, FALSE, FALSE, 0);
+      gtk_container_add (GTK_CONTAINER (grid), image);
     }
 
   gtk_widget_show_all (row);
