@@ -155,7 +155,7 @@ chat_embed_row_activated (ChatEmbed *self, GtkListBoxRow *row)
   gtk_label_set_markup (GTK_LABEL (priv->status_area_nickname), markup);
 
   presence = tp_account_get_current_presence (account, NULL, &status_message);
-  if (status_message == NULL)
+  if (status_message == NULL || status_message[0] == '\0')
     status_message = g_strdup (empathy_presence_get_default_message (presence));
   icon_name = empathy_icon_name_for_presence (presence);
   gtk_image_set_from_icon_name (GTK_IMAGE (priv->status_area_presence_icon), icon_name, GTK_ICON_SIZE_MENU);
