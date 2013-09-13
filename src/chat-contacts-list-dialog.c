@@ -1,5 +1,6 @@
 /*
  * Chat - instant messaging client for GNOME
+ * Copyright © 2013 Red Hat, Inc.
  * Copyright © 2013 Yosef Or Boczko <yoseforb@gmail.com>
  *
  * This program is free software; you can redistribute it and/or
@@ -26,6 +27,7 @@
 #include <telepathy-logger/telepathy-logger.h>
 
 #include "chat-contacts-list-dialog.h"
+#include "chat-utils.h"
 
 
 struct _ChatContactsListDialogPrivate
@@ -61,44 +63,6 @@ chat_contacts_list_dialog_accounts_value_destroy_func (gpointer data)
 }
 
 
-static GtkWidget *
-chat_contacts_list_dialog_get_avatar_image (TpContact *contact)
-{
-  GFile *avatar_file;
-
-  avatar_file = tp_contact_get_avatar_file (contact);
-  if (avatar_file)
-    {
-      GFileInputStream *stream;
-      GdkPixbuf *pixbuf;
-      GError *error = NULL;
-
-      stream = g_file_read (avatar_file, NULL, &error);
-      if (!stream)
-        {
-          g_warning ("Failed to load avatar: %s", error->message);
-          g_error_free (error);
-        }
-      else
-        {
-          pixbuf = gdk_pixbuf_new_from_stream_at_scale (G_INPUT_STREAM (stream), 32, 32, TRUE, NULL, &error);
-          if (!pixbuf)
-            {
-              g_warning ("Failed to create avatar: %s", error->message);
-              g_error_free (error);
-            }
-          else
-            {
-              return gtk_image_new_from_pixbuf (pixbuf);
-            }
-        }
-    }
-
-  return gtk_image_new_from_icon_name ("avatar-default-symbolic",
-                                       GTK_ICON_SIZE_DND);
-}
-
-
 static const gchar *
 chat_contacts_list_dialog_get_presence_image (TpConnectionPresenceType presence)
 {
@@ -123,11 +87,14 @@ chat_contacts_list_dialog_get_presence_image (TpConnectionPresenceType presence)
 
 
 static void
-chat_contacts_list_dialog_add_row (ChatContactsListDialog *self, TpContact *contact)
+chat_contacts_list_dialog_add_row_avatar (GObject *source_object, GAsyncResult *res, gpointer user_data)
 {
+  ChatContactsListDialog *self = CHAT_CONTACTS_LIST_DIALOG (user_data);
   ChatContactsListDialogPrivate *priv = self->priv;
   TpConnectionPresenceType presence;
   GtkWidget *row;
+  TpContact *contact = TP_CONTACT (source_object);
+  GError *error;
   GtkWidget *grid;
   GtkWidget *label;
   GtkWidget *image;
@@ -143,6 +110,15 @@ chat_contacts_list_dialog_add_row (ChatContactsListDialog *self, TpContact *cont
 
   alias = tp_contact_get_alias (contact);
 
+  error = NULL;
+  image = GTK_WIDGET (chat_utils_get_contact_avatar_finish (contact, res, &error));
+  if (error != NULL)
+    {
+      image = GTK_WIDGET (chat_utils_get_contact_avatar_default ());
+      g_warning ("Unable to get avatar for %s: %s", alias, error->message);
+      g_error_free (error);
+    }
+
   row = gtk_list_box_row_new ();
   g_object_set_data_full (G_OBJECT (row), "chat-contact", g_strdup (alias), (GDestroyNotify) g_free);
   grid = gtk_grid_new ();
@@ -153,7 +129,6 @@ chat_contacts_list_dialog_add_row (ChatContactsListDialog *self, TpContact *cont
   gtk_container_add (GTK_CONTAINER (row), grid);
   gtk_container_add (GTK_CONTAINER (priv->list_box), row);
 
-  image = chat_contacts_list_dialog_get_avatar_image (contact);
   gtk_container_add (GTK_CONTAINER (grid), image);
 
   label = gtk_label_new (alias);
@@ -167,6 +142,14 @@ chat_contacts_list_dialog_add_row (ChatContactsListDialog *self, TpContact *cont
     }
 
   gtk_widget_show_all (row);
+  g_object_unref (self);
+}
+
+
+static void
+chat_contacts_list_dialog_add_row (ChatContactsListDialog *self, TpContact *contact)
+{
+  chat_utils_get_contact_avatar (contact, NULL, chat_contacts_list_dialog_add_row_avatar, g_object_ref (self));
 }
 
 
