@@ -9,8 +9,8 @@ msgstr ""
 "Project-Id-Version: gnome-chat master\n"
 "Report-Msgid-Bugs-To: http://bugzilla.gnome.org/enter_bug.cgi?product=gnome-"
 "chat&keywords=I18N+L10N&component=general\n"
-"POT-Creation-Date: 2013-09-11 16:35+0000\n"
-"PO-Revision-Date: 2013-09-11 21:17+0100\n"
+"POT-Creation-Date: 2013-09-21 17:21+0000\n"
+"PO-Revision-Date: 2013-09-22 21:37+0100\n"
 "Last-Translator: Matej Urbančič <mateju@svn.gnome.org>\n"
 "Language-Team: Slovenian GNOME Translation Team <gnome-si@googlegroups.com>\n"
 "Language: sl_SI\n"
@@ -67,8 +67,20 @@ msgid "Quit"
 msgstr "Končaj"
 
 #: ../src/chat-contacts-list-dialog.ui.h:1
-msgid "Contacts"
-msgstr "Stiki"
+msgid "New Conversation"
+msgstr "Nov pogovor"
+
+#: ../src/chat-contacts-list-dialog.ui.h:2
+msgid "Cancel"
+msgstr "Prekliči"
+
+#: ../src/chat-contacts-list-dialog.ui.h:3
+msgid "Done"
+msgstr "Končano"
+
+#: ../src/chat-contacts-list-dialog.ui.h:4
+msgid "Type to search a contact…"
+msgstr "Vnos za iskanje stika ..."
 
 #: ../src/chat-main-toolbar.ui.h:1
 msgid "Conversations"
@@ -108,3 +120,6 @@ msgstr "Nepovezano"
 msgctxt "presence"
 msgid "Unknown"
 msgstr "Neznano"
+
+#~ msgid "Contacts"
+#~ msgstr "Stiki"
