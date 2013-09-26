@@ -6,6 +6,11 @@
     border-width: 0 0 0 1px;
 }
 
+.chat-status-area,
+.chat-main-input-area {
+    border-width: 1px 0 0 0;
+}
+
 chat-left-header-bar:dir(ltr) {
  border-right-width: 1px;
 }
