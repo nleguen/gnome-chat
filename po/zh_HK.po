@@ -1,0 +1,117 @@
+# Chinese (Hong Kong) translation for gnome-chat.
+# Copyright (C) 2013 gnome-chat's COPYRIGHT HOLDER
+# This file is distributed under the same license as the gnome-chat package.
+# Cheng-Chia Tseng <pswo10680@gmail.com>, 2013.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: gnome-chat master\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2013-09-30 19:30+0800\n"
+"PO-Revision-Date: 2013-09-30 19:30+0800\n"
+"Last-Translator: Cheng-Chia Tseng <pswo10680@gmail.com>\n"
+"Language-Team: Chinese (Hong Kong) <community@linuxhall.org>\n"
+"Language: zh_TW\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Poedit 1.5.4\n"
+
+#: ../data/gnome-chat.desktop.in.in.h:1
+msgid "Chat"
+msgstr "聊天"
+
+#: ../data/gnome-chat.desktop.in.in.h:2
+msgid "Instant messaging client"
+msgstr "即時通訊客戶端"
+
+#: ../data/gnome-chat.desktop.in.in.h:3
+msgid "Chat;Talk;IM;Message;VOIP;GTalk;Facebook;Jabber;"
+msgstr "Chat;Talk;IM;Message;VOIP;GTalk;Facebook;Jabber;聊天;談天;打屁;對談;對話;即時通;訊息;"
+
+#: ../data/org.gnome.chat.gschema.xml.in.h:1
+msgid "Window size"
+msgstr "視窗大小"
+
+#: ../data/org.gnome.chat.gschema.xml.in.h:2
+msgid "Window size (width and height)."
+msgstr "視窗大小 (闊度與高度)。"
+
+#: ../data/org.gnome.chat.gschema.xml.in.h:3
+msgid "Window position"
+msgstr "視窗位置"
+
+#: ../data/org.gnome.chat.gschema.xml.in.h:4
+msgid "Window position (x and y)."
+msgstr "視窗位置 (x 與 y)。"
+
+#: ../data/org.gnome.chat.gschema.xml.in.h:5
+msgid "Window maximized"
+msgstr "視窗最大化"
+
+#: ../data/org.gnome.chat.gschema.xml.in.h:6
+msgid "Window maximized state"
+msgstr "視窗最大化狀態"
+
+#: ../src/chat-app-menu.ui.h:1
+msgid "About Chat"
+msgstr "關於 Chat"
+
+#: ../src/chat-app-menu.ui.h:2
+msgid "Quit"
+msgstr "退出"
+
+#: ../src/chat-contacts-list-dialog.ui.h:1
+msgid "New Conversation"
+msgstr "新增對話"
+
+#: ../src/chat-contacts-list-dialog.ui.h:2
+msgid "Cancel"
+msgstr "取消"
+
+#: ../src/chat-contacts-list-dialog.ui.h:3
+msgid "Done"
+msgstr "完成"
+
+#: ../src/chat-contacts-list-dialog.ui.h:4
+msgid "Type to search a contact…"
+msgstr "請輸入以搜尋聯絡人…"
+
+#: ../src/chat-main-toolbar.ui.h:1
+msgid "Conversations"
+msgstr "對話"
+
+#: ../src/chat-main-window.c:262
+msgid "Instant messaging client for GNOME"
+msgstr "GNOME 的即時通訊客戶端。"
+
+#. Translators: Put your names here
+#: ../src/chat-main-window.c:272
+msgid "translator-credits"
+msgstr "Cheng-Chia Tseng <pswo10680@gmail.com>, 2013."
+
+#: ../src/empathy-utils.c:36
+msgid "Available"
+msgstr "上線"
+
+#: ../src/empathy-utils.c:38
+msgid "Busy"
+msgstr "忙碌"
+
+#: ../src/empathy-utils.c:41
+msgid "Away"
+msgstr "離開"
+
+#: ../src/empathy-utils.c:43
+msgid "Invisible"
+msgstr "隱藏"
+
+#: ../src/empathy-utils.c:45
+msgid "Offline"
+msgstr "離線"
+
+#. translators: presence type is unknown
+#: ../src/empathy-utils.c:48
+msgctxt "presence"
+msgid "Unknown"
+msgstr "未知"
