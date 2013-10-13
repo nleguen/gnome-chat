@@ -1,0 +1,118 @@
+# Dutch translation of Gnome-chat
+# Copyright (C) 2013 Gnome-chat's COPYRIGHT HOLDER
+# This file is distributed under the same license as the Gnome-chat package.
+# Reinout van Schouwen <reinouts@gnome.org>, 2013
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Gnome-chat\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2013-10-13 23:25+0200\n"
+"PO-Revision-Date: 2013-10-13 23:30+0200\n"
+"Last-Translator: Reinout van Schouwen <reinouts@gnome.org>\n"
+"Language-Team: Dutch <vertaling@vrijschrift.org>\n"
+"Language: nl\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+#: ../data/gnome-chat.desktop.in.in.h:1
+msgid "Chat"
+msgstr "Chatten"
+
+#: ../data/gnome-chat.desktop.in.in.h:2
+msgid "Instant messaging client"
+msgstr "Programma om expresberichten te versturen"
+
+#: ../data/gnome-chat.desktop.in.in.h:3
+msgid "Chat;Talk;IM;Message;VOIP;GTalk;Facebook;Jabber;"
+msgstr "Chat;Talk;IM;Message;VOIP;GTalk;Facebook;Jabber;bericht"
+
+#: ../data/org.gnome.chat.gschema.xml.in.h:1
+msgid "Window size"
+msgstr "Venstergrootte"
+
+#: ../data/org.gnome.chat.gschema.xml.in.h:2
+msgid "Window size (width and height)."
+msgstr "Venstergrootte (breedte en hoogte)."
+
+#: ../data/org.gnome.chat.gschema.xml.in.h:3
+msgid "Window position"
+msgstr "Vensterpositie"
+
+#: ../data/org.gnome.chat.gschema.xml.in.h:4
+msgid "Window position (x and y)."
+msgstr "Vensterpositie (x en y)."
+
+#: ../data/org.gnome.chat.gschema.xml.in.h:5
+msgid "Window maximized"
+msgstr "Venster gemaximaliseerd"
+
+#: ../data/org.gnome.chat.gschema.xml.in.h:6
+msgid "Window maximized state"
+msgstr "Venster in gemaximaliseerde staat"
+
+#: ../src/chat-app-menu.ui.h:1
+msgid "About Chat"
+msgstr "Info over Chatten"
+
+#: ../src/chat-app-menu.ui.h:2
+msgid "Quit"
+msgstr "Afsluiten"
+
+#: ../src/chat-contacts-list-dialog.ui.h:1
+msgid "New Conversation"
+msgstr "Nieuw gesprek"
+
+#: ../src/chat-contacts-list-dialog.ui.h:2
+msgid "Cancel"
+msgstr "Annuleren"
+
+#: ../src/chat-contacts-list-dialog.ui.h:3
+msgid "Done"
+msgstr "Klaar"
+
+#: ../src/chat-contacts-list-dialog.ui.h:4
+msgid "Type to search a contact…"
+msgstr "Typ om een contactpersoon te zoeken…"
+
+#: ../src/chat-main-toolbar.ui.h:1
+msgid "Conversations"
+msgstr "Gesprekken"
+
+#: ../src/chat-main-window.c:262
+msgid "Instant messaging client for GNOME"
+msgstr "Expresberichten sturen in Gnome"
+
+#. Translators: Put your names here
+#: ../src/chat-main-window.c:272
+msgid "translator-credits"
+msgstr ""
+"Reinout van Schouwen <reinouts@gnome.org>"
+
+#: ../src/empathy-utils.c:36
+msgid "Available"
+msgstr "Beschikbaar"
+
+#: ../src/empathy-utils.c:38
+msgid "Busy"
+msgstr "Bezig"
+
+#: ../src/empathy-utils.c:41
+msgid "Away"
+msgstr "Weg"
+
+#: ../src/empathy-utils.c:43
+msgid "Invisible"
+msgstr "Onzichtbaar"
+
+#: ../src/empathy-utils.c:45
+msgid "Offline"
+msgstr "Off-line"
+
+#. translators: presence type is unknown
+#: ../src/empathy-utils.c:48
+msgctxt "presence"
+msgid "Unknown"
+msgstr "Onbekend"
