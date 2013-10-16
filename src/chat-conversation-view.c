@@ -31,6 +31,7 @@ G_DEFINE_TYPE_WITH_CODE (ChatConversationView, chat_conversation_view, GTK_TYPE_
                          G_IMPLEMENT_INTERFACE (GTK_TYPE_BUILDABLE,
                                                 chat_conversation_view_buildable_init));
 
+
 static void
 chat_conversation_get_preferred_width (GtkWidget *widget, gint *minimum_width, gint *natural_width)
 {
@@ -40,6 +41,7 @@ chat_conversation_get_preferred_width (GtkWidget *widget, gint *minimum_width, g
   if (natural_width)
     *natural_width = 1;
 }
+
 
 static void
 chat_conversation_view_init (ChatConversationView *self)
