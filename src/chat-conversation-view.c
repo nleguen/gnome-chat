@@ -31,6 +31,15 @@ G_DEFINE_TYPE_WITH_CODE (ChatConversationView, chat_conversation_view, GTK_TYPE_
                          G_IMPLEMENT_INTERFACE (GTK_TYPE_BUILDABLE,
                                                 chat_conversation_view_buildable_init));
 
+static void
+chat_conversation_get_preferred_width (GtkWidget *widget, gint *minimum_width, gint *natural_width)
+{
+  if (minimum_width)
+    *minimum_width = 1;
+
+  if (natural_width)
+    *natural_width = 1;
+}
 
 static void
 chat_conversation_view_init (ChatConversationView *self)
@@ -43,6 +52,8 @@ static void
 chat_conversation_view_class_init (ChatConversationViewClass *class)
 {
   GtkWidgetClass *widget_class = GTK_WIDGET_CLASS (class);
+
+  widget_class->get_preferred_width = chat_conversation_get_preferred_width;
 
   gtk_widget_class_set_template_from_resource (widget_class, "/org/gnome/chat/conversation-view.ui");
 }
