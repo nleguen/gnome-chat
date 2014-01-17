@@ -1,0 +1,118 @@
+# Indonesian translation of gnome-chat help
+# Copyright (C) 2014 THE gnome-chat'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the gnome-chat package.
+# Lorenz Adam Damara <lorenzrenz@gmail.com>, 2014.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: gnome-chat master\n"
+"Report-Msgid-Bugs-To: http://bugzilla.gnome.org/enter_bug.cgi?product=gnome-"
+"chat&keywords=I18N+L10N&component=general\n"
+"POT-Creation-Date: 2013-12-18 20:06+0000\n"
+"PO-Revision-Date: 2014-01-17 08:33+0700\n"
+"Last-Translator: Lorenz Adam Damara <lorenzrenz@gmail.com>\n"
+"Language-Team: Indonesian <gnome@i15n.org>\n"
+"Language: id\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Poedit 1.5.4\n"
+
+#: ../data/gnome-chat.desktop.in.in.h:1
+msgid "Chat"
+msgstr "Obrolan"
+
+#: ../data/gnome-chat.desktop.in.in.h:2
+msgid "Instant messaging client"
+msgstr "Klien perpesanan instan"
+
+#: ../data/gnome-chat.desktop.in.in.h:3
+msgid "Chat;Talk;IM;Message;VOIP;GTalk;Facebook;Jabber;"
+msgstr "Chat;Talk;IM;Message;VOIP;GTalk;Facebook;Jabber;"
+
+#: ../data/org.gnome.chat.gschema.xml.in.h:1
+msgid "Window size"
+msgstr "Ukuran jendela"
+
+#: ../data/org.gnome.chat.gschema.xml.in.h:2
+msgid "Window size (width and height)."
+msgstr "Ukuran jendela (panjang dan lebar)"
+
+#: ../data/org.gnome.chat.gschema.xml.in.h:3
+msgid "Window position"
+msgstr "Posisi jendela"
+
+#: ../data/org.gnome.chat.gschema.xml.in.h:4
+msgid "Window position (x and y)."
+msgstr "Posisi jendela (x dan y)"
+
+#: ../data/org.gnome.chat.gschema.xml.in.h:5
+msgid "Window maximized"
+msgstr "Jendela dimaksimalkan"
+
+#: ../data/org.gnome.chat.gschema.xml.in.h:6
+msgid "Window maximized state"
+msgstr "Kondisi jendela dimaksimalkan"
+
+#: ../src/chat-app-menu.ui.h:1
+msgid "About Chat"
+msgstr "Tentang Obrolan"
+
+#: ../src/chat-app-menu.ui.h:2
+msgid "Quit"
+msgstr "Keluar"
+
+#: ../src/chat-contacts-list-dialog.ui.h:1
+msgid "New Conversation"
+msgstr "Obrolan Baru"
+
+#: ../src/chat-contacts-list-dialog.ui.h:2
+msgid "Cancel"
+msgstr "Batal"
+
+#: ../src/chat-contacts-list-dialog.ui.h:3
+msgid "Done"
+msgstr "Selesai"
+
+#: ../src/chat-contacts-list-dialog.ui.h:4
+msgid "Type to search a contact…"
+msgstr "Ketik untuk mencari kontak..."
+
+#: ../src/chat-main-toolbar.ui.h:1
+msgid "Conversations"
+msgstr "Obrolan"
+
+#: ../src/chat-main-window.c:262
+msgid "Instant messaging client for GNOME"
+msgstr "Perpesanan instan bagi GNOME"
+
+#. Translators: Put your names here
+#: ../src/chat-main-window.c:272
+msgid "translator-credits"
+msgstr "Lorenz Adam Damara <lorenzrenz@gmail.com>, 2014"
+
+#: ../src/empathy-utils.c:36
+msgid "Available"
+msgstr "Ada"
+
+#: ../src/empathy-utils.c:38
+msgid "Busy"
+msgstr "Sibuk"
+
+#: ../src/empathy-utils.c:41
+msgid "Away"
+msgstr "Pergi"
+
+#: ../src/empathy-utils.c:43
+msgid "Invisible"
+msgstr "Tidak Terlihat"
+
+#: ../src/empathy-utils.c:45
+msgid "Offline"
+msgstr "Luring"
+
+#. translators: presence type is unknown
+#: ../src/empathy-utils.c:48
+msgctxt "presence"
+msgid "Unknown"
+msgstr "Tak Diketahui"
